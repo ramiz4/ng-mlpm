@@ -13,7 +13,9 @@
     "test:lib": "ng test mlpm --watch=false --browsers=ChromeHeadless",
     "test:app": "ng test mlpm-app --watch=false --browsers=ChromeHeadless",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "pack:lib": "cd dist/mlpm && npm pack",
+    "publish:lib": "cd dist/mlpm && npm publish"
   },
   "private": true,
   "dependencies": {

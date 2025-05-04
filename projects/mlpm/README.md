@@ -1,63 +1,214 @@
-# Mlpm
+# @ramiz4/ng-mlpm
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+![Version](https://img.shields.io/badge/version-19.0.0-blue.svg)
+![Angular](https://img.shields.io/badge/Angular-19.x-red.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## Code scaffolding
+A modern, lightweight UI component library for Angular applications.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ✨ Features
+
+- 🚀 Built for Angular 19+
+- 🎨 Customizable components
+- 📱 Responsive design
+- 🔍 Accessibility focused
+- 🧩 Modular architecture
+- 🖼️ Compatible with any icon library
+
+## 📦 Installation
 
 ```bash
-ng generate component component-name
+npm install @ramiz4/ng-mlpm
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🔧 Usage
+
+### Import the module
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MlpmComponent } from '@ramiz4/ng-mlpm';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    MlpmComponent
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+### Use components in your templates
+
+```html
+<!-- Using the main component -->
+<ng-mlpm 
+  [title]="'Main Menu'" 
+  [titleIcon]="'menu'"
+  [menuItems]="menuItems"
+  (linkClick)="handleLinkClick($event)">
+  Content goes here
+</ng-mlpm>
+```
+
+## 🧩 Available Components
+
+### MLPM Component
+
+The main component that provides menu functionality with various UI features.
+
+```html
+<ng-mlpm [menuItems]="customMenuItems" [colorTheme]="customTheme"></ng-mlpm>
+```
+
+## 🎨 Customization
+
+You can customize component appearance by:
+
+1. Passing in configuration objects
+2. Using CSS variables
+3. Extending component styles
+
+Example:
+
+```typescript
+// In your component
+import { MenuColorTheme, MenuItem } from '@ramiz4/ng-mlpm';
+
+export class AppComponent {
+  // Define your menu items
+  menuItems: MenuItem[] = [
+    {
+      label: 'Dashboard',
+      icon: 'dashboard',
+      link: '/dashboard'
+    },
+    {
+      label: 'Settings',
+      icon: 'settings',
+      children: [
+        {
+          label: 'Profile',
+          icon: 'person',
+          link: '/settings/profile'
+        },
+        {
+          label: 'Account',
+          icon: 'account_circle',
+          link: '/settings/account'
+        }
+      ]
+    }
+  ];
+
+  // Custom theme
+  customTheme: Partial<MenuColorTheme> = {
+    primary: '#1e3a8a',
+    accent: '#3b82f6'
+  };
+
+  // Handle menu item clicks
+  handleLinkClick(item: MenuItem): void {
+    console.log('Clicked:', item.label, item.link);
+    // Add your navigation logic here
+  }
+}
+```
+
+## 🔣 Using Custom Icon Libraries
+
+This library is designed to work with any icon library of your choice. You can use Material Icons, Font Awesome, Bootstrap Icons, or any other icon library by simply including the appropriate CSS classes in your configuration.
+
+### Setup Your Icon Library
+
+First, install and include your preferred icon library in your project. For example, if using Font Awesome:
 
 ```bash
-ng generate --help
+npm install @fortawesome/fontawesome-free
 ```
 
-## Building
+Then import it in your `styles.scss`:
 
-To build the library, run:
+```scss
+@import '@fortawesome/fontawesome-free/css/all.css';
+```
+
+### Use Icon Classes in Your Configuration
+
+When configuring the menu items, simply use the CSS classes from your icon library:
+
+```typescript
+// Using Font Awesome icons
+menuItems: MenuItem[] = [
+  {
+    label: 'Dashboard',
+    icon: 'fas fa-tachometer-alt', // Font Awesome class
+    link: '/dashboard'
+  },
+  {
+    label: 'Settings',
+    icon: 'fas fa-cog', // Font Awesome class
+    children: [
+      {
+        label: 'Profile',
+        icon: 'fas fa-user', // Font Awesome class
+        link: '/settings/profile'
+      }
+    ]
+  }
+];
+```
+
+For the title icon, provide the CSS class for your icon:
+
+```html
+<ng-mlpm [titleIcon]="'fas fa-bars'"></ng-mlpm>
+```
+
+### Examples with Different Icon Libraries
+
+**Material Icons:**
+```typescript
+// Using Material Icons
+menuItems = [
+  { label: 'Home', icon: 'material-icons home', link: '/home' },
+  { label: 'Settings', icon: 'material-icons settings', children: [...] }
+];
+```
+
+**Bootstrap Icons:**
+```typescript
+// Using Bootstrap Icons
+menuItems = [
+  { label: 'Home', icon: 'bi bi-house', link: '/home' },
+  { label: 'Settings', icon: 'bi bi-gear', children: [...] }
+];
+```
+
+The icons will be automatically applied to the menu items and will reflect the style of your chosen icon library.
+
+## 🚀 Development
+
+### Building the library
 
 ```bash
 ng build mlpm
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/mlpm
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Running tests
 
 ```bash
-ng test
+ng test mlpm
 ```
 
-## Running end-to-end tests
+## 📄 License
 
-For end-to-end (e2e) testing, run:
+MIT © [Ramiz Loki](https://github.com/yourusername)
 
-```bash
-ng e2e
-```
+## 🤝 Contributing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributions, issues and feature requests are welcome!
