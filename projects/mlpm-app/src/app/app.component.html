@@ -1,0 +1,39 @@
+<ng-mlpm
+  #menu
+  title="Custom Theme Menu"
+  titleIcon="fa fa-bars"
+  [menuItems]="menuItems"
+  [colorTheme]="customTheme"
+  (linkClick)="handleMenuLinkClick($event)"
+>
+  <div
+    class="menu-content"
+    [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'"
+  >
+    <div class="button-container">
+      <button class="menu-toggle-button" (click)="toggleMenu()">
+        <i class="fa fa-bars"></i> Toggle Menu
+      </button>
+
+      <!-- Fancy Theme Toggle Switch -->
+      <div class="theme-toggle">
+        <input
+          type="checkbox"
+          id="themeToggle"
+          class="theme-toggle-checkbox"
+          [checked]="!isDarkTheme"
+          (change)="toggleTheme()"
+        />
+        <label for="themeToggle" class="theme-toggle">
+          <i
+            class="toggle-icon"
+            [class.fa]="true"
+            [class.fa-moon-o]="isDarkTheme"
+            [class.fa-sun-o]="!isDarkTheme"
+          ></i>
+        </label>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</ng-mlpm>

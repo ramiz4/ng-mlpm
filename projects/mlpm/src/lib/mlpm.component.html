@@ -1,0 +1,59 @@
+<div class="mlpm-wrapper" [class.collapsed]="collapsed">
+  <div
+    class="mlpm-level"
+    *ngFor="let level of allLevels; let i = index"
+    [style.transform]="'translateX(' + (i - activeIndex) * 100 + '%)'"
+    [style.zIndex]="i + 1"
+  >
+    <div class="mlpm-header">
+      <h2 class="mlpm-title">{{ getLevelTitle(i) }}</h2>
+      <ng-mlpm-icon
+        [name]="getIconName(getLevelIcon(i))"
+        size="24"
+        (click)="onTitleIconClick()"
+        class="mlpm-icon"
+        [class.clickable]="i === 0"
+        [type]="'title'"
+      ></ng-mlpm-icon>
+    </div>
+
+    <button class="mlpm-back-button" *ngIf="i > 0" (click)="goBack()">
+      <ng-mlpm-icon
+        name="arrow-left"
+        size="20"
+        class="mlpm-back-icon"
+      ></ng-mlpm-icon>
+      <span>Back</span>
+    </button>
+
+    <ul class="mlpm-list">
+      <li
+        *ngFor="let item of level"
+        (click)="openSubmenu(item)"
+        (keydown.enter)="openSubmenu(item)"
+        (keydown.space)="openSubmenu(item)"
+        tabindex="0"
+      >
+        <span class="mlpm-item-content">
+          <ng-mlpm-icon
+            *ngIf="item.icon"
+            [name]="getIconName(item.icon)"
+            size="20"
+            class="mlpm-item-icon"
+          ></ng-mlpm-icon>
+          <span class="mlpm-item-label">{{ item.label }}</span>
+        </span>
+        <ng-mlpm-icon
+          *ngIf="item.children"
+          name="chevron-right"
+          size="16"
+          class="mlpm-item-arrow"
+        ></ng-mlpm-icon>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="mlpm-content" [ngClass]="{ collapsed: collapsed }">
+  <ng-content></ng-content>
+</div>
