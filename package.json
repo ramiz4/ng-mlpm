@@ -1,6 +1,6 @@
 {
   "name": "ng-mlpm",
-  "version": "0.0.0",
+  "version": "19.0.0",
   "scripts": {
     "start": "ng serve",
     "build": "pnpm build:lib && pnpm build:app",
