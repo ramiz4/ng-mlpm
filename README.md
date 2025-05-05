@@ -1,12 +1,88 @@
-# NgMlpm
+# 🚀 NgMlpm - Angular Multilevel Progressive Menu
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+<div align="center">
+  <img src="https://img.shields.io/badge/Angular-19.2-dd0031.svg" alt="Angular Version">
+  <img src="https://img.shields.io/badge/TypeScript-5.7-007acc.svg" alt="TypeScript Version">
+  <a href="https://ramiz4.github.io/ng-mlpm/home" target="_blank">
+    <img src="https://img.shields.io/badge/Demo-Live-brightgreen.svg" alt="Live Demo">
+  </a>
+</div>
 
-## Demo
+## ✨ Overview
 
-Check out the live demo of this project at: [https://ramiz4.github.io/ng-mlpm/home](https://ramiz4.github.io/ng-mlpm/home)
+**NgMlpm** is an elegant, highly customizable multilevel progressive menu component library for Angular applications. It provides a smooth user experience for navigating complex menu hierarchies with animated transitions and a responsive design.
 
-## Development server
+## 🔥 Live Demo
+
+Experience the component in action: [Live Demo](https://ramiz4.github.io/ng-mlpm/home)
+
+## 🎨 Features
+
+- **Hierarchical Navigation** - Seamlessly navigate through nested menu structures
+- **Smooth Animations** - Enjoy fluid transitions between menu levels
+- **Customizable Themes** - Easily adapt the menu to match your application's design system
+- **Icon Support** - Integrate icons for enhanced visual navigation
+- **Responsive Design** - Works beautifully across all device sizes
+- **Standalone Components** - Built with Angular's latest standalone component architecture
+- **Lightweight** - Minimal footprint for optimal performance
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install ng-mlpm
+# or
+pnpm add ng-mlpm
+# or
+yarn add ng-mlpm
+```
+
+### Basic Usage
+
+```typescript
+// Import the component in your standalone component or NgModule
+import { MlpmComponent } from 'ng-mlpm';
+
+@Component({
+  // ...
+  imports: [MlpmComponent],
+  // ...
+})
+export class YourComponent {
+  menuItems = [
+    {
+      label: 'Dashboard',
+      icon: 'dashboard',
+      link: '/dashboard'
+    },
+    {
+      label: 'Settings',
+      icon: 'settings',
+      children: [
+        { label: 'Profile', icon: 'person', link: '/settings/profile' },
+        { label: 'Preferences', icon: 'tune', link: '/settings/preferences' }
+      ]
+    }
+  ];
+  
+  onMenuItemClick(item) {
+    console.log('Menu item clicked:', item);
+  }
+}
+```
+
+```html
+<ng-mlpm 
+  [title]="'My App'" 
+  [titleIcon]="'menu'" 
+  [menuItems]="menuItems"
+  [colorTheme]="customTheme"
+  (linkClick)="onMenuItemClick($event)">
+</ng-mlpm>
+```
+
+## 🛠️ Development
 
 To start a local development server, run:
 
