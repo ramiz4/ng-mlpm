@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/ramiz4/ng-mlpm.git"
   },
+  "homepage": "https://github.com/ramiz4/ng-mlpm",
+  "bugs": {
+    "url": "https://github.com/ramiz4/ng-mlpm/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
