@@ -9,6 +9,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
+    # Add permissions for GitHub Pages
+    permissions:
+      contents: write
+    
     steps:
     - uses: actions/checkout@v4
     
@@ -31,10 +35,14 @@ jobs:
       run: pnpm build:lib
     
     - name: Build application
-      run: pnpm build:app --base-href="./ng-mlpm/"
+      run: pnpm build:app --base-href="/ng-mlpm/"
     
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: dist/mlpm-app/browser
         branch: gh-pages
+        token: ${{ secrets.GITHUB_TOKEN }}
+        clean: true
+        force: true
+        attempt-limit: 3
