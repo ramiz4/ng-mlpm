@@ -120,6 +120,26 @@ describe('MlpmComponent', () => {
     expect(component.activeIndex).toBe(1);
   }));
 
+  it('should handle menu item with undefined icon when opening submenu', fakeAsync(() => {
+    // Arrange - create a menu item with children but without an icon
+    const menuItem: MenuItem = {
+      label: 'Parent',
+      // icon is intentionally omitted to test the fallback
+      children: [{ label: 'Child' }],
+    };
+
+    // Act
+    component.openSubmenu(menuItem);
+    tick(1); // For setTimeout to execute
+
+    // Assert
+    expect(component.menuStack.length).toBe(1);
+    expect(component.titleStack[0]).toBe('Parent');
+    // Verify that an empty string was pushed to iconStack when icon was undefined
+    expect(component.iconStack[0]).toBe('');
+    expect(component.activeIndex).toBe(1);
+  }));
+
   it('should emit linkClick when item has link', () => {
     // Arrange
     const menuItem: MenuItem = {
