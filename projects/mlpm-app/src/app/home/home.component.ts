@@ -1,18 +1,12 @@
-import { AsyncPipe, JsonPipe, NgClass, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { ThemeService } from '../theme.service';
+import { JsonPipe } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  imports: [NgIf, AsyncPipe, NgClass, JsonPipe],
+  imports: [JsonPipe],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  private readonly themeService = inject(ThemeService);
-
-  theme$ = this.themeService.theme$;
-
   // Example menu items that could be used with MLPM
   exampleMenuItems = [
     {

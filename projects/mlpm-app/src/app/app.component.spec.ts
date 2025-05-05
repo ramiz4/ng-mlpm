@@ -64,12 +64,12 @@ describe('AppComponent', () => {
 
   it('should have the dark theme by default', () => {
     expect(themeServiceSpy.currentTheme).toBe('dark');
-    expect(component.customTheme).toEqual(component.darkTheme);
+    expect(component.customMenuTheme).toEqual(component.darkTheme);
   });
 
   it('should toggle theme from dark to light', () => {
     // Initially dark theme
-    expect(component.customTheme).toEqual(component.darkTheme);
+    expect(component.customMenuTheme).toEqual(component.darkTheme);
 
     // Setup themeService to return light after toggle
     Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'light' });
@@ -81,12 +81,12 @@ describe('AppComponent', () => {
     expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
     
     // Now simulate what the component would do after toggle
-    component.customTheme = themeServiceSpy.currentTheme === 'dark' 
+    component.customMenuTheme = themeServiceSpy.currentTheme === 'dark' 
       ? component.darkTheme 
       : component.lightTheme;
     
     // Should now be light theme
-    expect(component.customTheme).toEqual(component.lightTheme);
+    expect(component.customMenuTheme).toEqual(component.lightTheme);
   });
 
   it('should toggle theme from light to dark', () => {
@@ -94,11 +94,11 @@ describe('AppComponent', () => {
     Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'light' });
     
     // Force component to update customTheme to light
-    component.customTheme = component.lightTheme;
+    component.customMenuTheme = component.lightTheme;
     fixture.detectChanges();
     
     // Verify it's light theme
-    expect(component.customTheme).toEqual(component.lightTheme);
+    expect(component.customMenuTheme).toEqual(component.lightTheme);
     
     // Setup themeService to return dark after toggle
     Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'dark' });
@@ -110,12 +110,12 @@ describe('AppComponent', () => {
     expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
     
     // Now simulate what the component would do after toggle
-    component.customTheme = themeServiceSpy.currentTheme === 'dark' 
+    component.customMenuTheme = themeServiceSpy.currentTheme === 'dark' 
       ? component.darkTheme 
       : component.lightTheme;
     
     // Should now be dark theme
-    expect(component.customTheme).toEqual(component.darkTheme);
+    expect(component.customMenuTheme).toEqual(component.darkTheme);
   });
 
   it('should toggle menu', () => {
@@ -187,7 +187,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     
     // Verify dark theme is used
-    expect(component.customTheme).toEqual(component.darkTheme);
+    expect(component.customMenuTheme).toEqual(component.darkTheme);
   });
 
   it('should use lightTheme when theme is light', () => {
@@ -200,6 +200,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     
     // Verify light theme is used
-    expect(component.customTheme).toEqual(component.lightTheme);
+    expect(component.customMenuTheme).toEqual(component.lightTheme);
   });
 });

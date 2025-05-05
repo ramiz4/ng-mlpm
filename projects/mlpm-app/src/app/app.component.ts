@@ -1,16 +1,14 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import {
-  MenuColorTheme,
-  MenuItem,
-  MlpmComponent,
-} from '../../../mlpm/src/public-api';
+import { of, switchMap } from 'rxjs';
+import { MenuItem, MlpmComponent } from '../../../mlpm/src/public-api';
+import { ThemeToggleComponent } from './shared/theme-toggle/theme-toggle.component';
 import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [NgIf, AsyncPipe, RouterOutlet, MlpmComponent],
+  imports: [AsyncPipe, RouterOutlet, MlpmComponent, ThemeToggleComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -20,28 +18,9 @@ export class AppComponent {
   private readonly router = inject(Router);
   private readonly themeService = inject(ThemeService);
 
-  theme$ = this.themeService.theme$;
-
-  // Dark theme definition
-  darkTheme: MenuColorTheme = {
-    primary: '#212121', // Dark background
-    secondary: '#424242', // Slightly lighter background
-    text: '#ffffff', // White text
-    accent: '#ff4081', // Pink accent
-    hover: '#616161', // Hover color
-  };
-
-  // Light theme definition
-  lightTheme: MenuColorTheme = {
-    primary: '#ffffff', // Light background
-    secondary: '#f5f5f5', // Slightly darker background
-    text: '#000000', // Black text
-    accent: '#ff4081', // Pink accent
-    hover: '#eeeeee', // Hover color
-  };
-
-  // Current active theme
-  customTheme = this.themeService.currentTheme === 'dark' ? this.darkTheme : this.lightTheme;
+  customMenuTheme$ = this.themeService.theme$.pipe(
+    switchMap((theme) => of(this.themeService.themeMap[theme]))
+  );
 
   menuItems: MenuItem[] = [
     {
@@ -260,39 +239,13 @@ export class AppComponent {
     },
   ];
 
-  // Handler for menu link clicks
   handleMenuLinkClick(item: MenuItem): void {
-    // Users can implement their own custom logic here
     console.log('Menu item clicked:', item);
-
-    // Example of different actions based on link
     if (item.link) {
-      // You could navigate programmatically
       this.router.navigate([item.link]);
-
-      // Or open in a new tab
-      // window.open(item.link, '_blank');
-
-      // Or show a modal with content related to the link
-      // this.dialogService.open(item.link);
-
-      // You can access additional properties from the menu item
-      if (item.label) {
-        console.log(`The selected item was: ${item.label}`);
-      }
     }
   }
 
-  // Toggle between dark and light themes
-  toggleTheme(): void {
-    this.themeService.toggleTheme();
-    this.customTheme =
-      this.themeService.currentTheme === 'dark'
-        ? this.darkTheme
-        : this.lightTheme;
-  }
-
-  // Example method to programmatically toggle the menu
   toggleMenu() {
     this.menu.collapsed = !this.menu.collapsed;
   }
