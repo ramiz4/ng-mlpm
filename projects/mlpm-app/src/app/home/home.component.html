@@ -1,48 +1,104 @@
-<h1>Home</h1>
-<p>Welcome to the home page!</p>
-<p>Here you can find various resources and information.</p>
-<p>Feel free to explore the different sections of our website.</p>
-<p>We hope you find what you're looking for.</p>
-<p>If you have any questions, don't hesitate to reach out.</p>
-<p>Thank you for visiting our site!</p>
-<p>We appreciate your interest and support.</p>
-<p>Check back often for updates and new content.</p>
-<p>Stay connected with us on social media for the latest news.</p>
-<p>Join our community and be part of the conversation.</p>
-<p>We value your feedback and suggestions.</p>
-<p>Your input helps us improve and serve you better.</p>
-<p>Have a great day!</p>
+<div class="container" [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
+  <header>
+    <h1>MLPM - Multi-Level Progressive Menu</h1>
+    <p class="subtitle">A powerful navigation component for Angular applications</p>
+  </header>
 
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur id
-  recusandae inventore doloribus, quidem dicta molestias excepturi perspiciatis
-  hic quasi. Unde aspernatur facere perferendis consequuntur harum laudantium
-  culpa ex voluptatem. Quisquam, voluptatibus. Quod, cumque. Quisquam, voluptatibus.
-  Quod, cumque. Quisquam, voluptatibus. Quod, cumque. Quisquam, voluptatibus.
-</p>
+  <section class="overview">
+    <h2>What is MLPM?</h2>
+    <p>
+      MLPM is a standalone Angular component that provides a sophisticated, 
+      user-friendly navigation system with support for hierarchical menus, 
+      smooth transitions, and customizable theming.
+    </p>
+    
+    <div class="features">
+      <div class="feature-card">
+        <h3>Multi-Level Navigation</h3>
+        <p>Create unlimited menu hierarchies with smooth transitions between levels.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Customizable Themes</h3>
+        <p>Easily adapt the menu's appearance to match your application's design.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Icon Support</h3>
+        <p>Integrated icon component with fallbacks for consistent styling.</p>
+      </div>
+    </div>
+  </section>
 
-<p>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
+  <section class="installation">
+    <h2>Getting Started</h2>
+    <div class="code-block">
+      <pre><code>npm install ng-mlpm --save</code></pre>
+    </div>
+  </section>
 
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  
+  <section class="usage">
+    <h2>How to Use</h2>
+    <p>Import the component:</p>
+    <div class="code-block">
+      <pre><code>import {{ '{' }} MlpmComponent {{ '}' }} from 'ng-mlpm';</code></pre>
+    </div>
     
-    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  
+    <p>Define your menu structure:</p>
+    <div class="code-block">
+      <pre><code>menuItems = [
+  {{ '{' }}
+    label: 'Dashboard',
+    icon: 'dashboard',
+    link: '/dashboard'
+  {{ '}' }},
+  {{ '{' }}
+    label: 'Settings',
+    icon: 'settings',
+    children: [
+      {{ '{' }} label: 'Profile', icon: 'person', link: '/settings/profile' {{ '}' }},
+      {{ '{' }} label: 'Account', icon: 'account_circle', link: '/settings/account' {{ '}' }}
+    ]
+  {{ '}' }}
+];</code></pre>
+    </div>
     
-    Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  
+    <p>Add to your template:</p>
+    <div class="code-block">
+      <pre><code>&lt;ng-mlpm 
+  [title]="'My Application'" 
+  [titleIcon]="'menu'"
+  [menuItems]="menuItems"
+  [colorTheme]="myCustomTheme"
+  (linkClick)="handleNavigation($event)"
+&gt;&lt;/ng-mlpm&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="customization">
+    <h2>Customization</h2>
+    <p>MLPM offers theming through a simple interface. Here are examples of dark and light themes:</p>
     
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+    <div class="theme-examples">
+      <div class="theme-card dark">
+        <h3>Dark Theme</h3>
+        <div class="code-block">
+          <pre><code>darkTheme = {{darkTheme|json}}</code></pre>
+        </div>
+      </div>
+      
+      <div class="theme-card light">
+        <h3>Light Theme</h3>
+        <div class="code-block">
+          <pre><code>lightTheme = {{lightTheme|json}}</code></pre>
+        </div>
+      </div>
+    </div>
     
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.  
-    
-    Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.  
-    
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
-    
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  
-    
-    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  
-    
-    Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  
-    
-    Duis autem vel eum iriure dolor in
-</p>
+    <p>You can easily toggle between themes in your application:</p>
+    <div class="code-block">
+      <pre><code>toggleTheme(): void {{ '{' }}
+  this.isDarkTheme = !this.isDarkTheme;
+  this.customTheme = this.isDarkTheme ? this.darkTheme : this.lightTheme;
+{{ '}' }}</code></pre>
+    </div>
+  </section>
+</div>

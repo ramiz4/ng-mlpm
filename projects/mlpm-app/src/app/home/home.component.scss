@@ -1,0 +1,235 @@
+// Light theme variables
+$light-text: #333333;
+$light-heading: #2c3e50;
+$light-subheading: #7f8c8d;
+$light-border: #ff4081;
+$light-accent: #ff4081;
+$light-card-bg: #ffffff;
+$light-code-bg: #ffffff;
+$light-code-text: #2c3e50;
+
+// Dark theme variables
+$dark-text: #e0e0e0;
+$dark-heading: #ecf0f1;
+$dark-subheading: #bdc3c7;
+$dark-border: #ff4081;
+$dark-accent: #ff4081;
+$dark-card-bg: #5d5d5d;
+$dark-code-bg: #525252;
+$dark-code-text: #ecf0f1;
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+// Light Theme Styles
+.light-theme {
+  color: $light-text;
+
+  h1 {
+    color: $light-heading;
+  }
+
+  .subtitle {
+    color: $light-subheading;
+  }
+
+  h2 {
+    color: $light-accent;
+    border-bottom: 2px solid $light-border;
+  }
+
+  h3 {
+    color: $light-heading;
+  }
+
+  .feature-card {
+    background-color: $light-card-bg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .code-block {
+    background-color: $light-code-bg;
+  }
+
+  code {
+    color: $light-code-text;
+  }
+}
+
+// Dark Theme Styles
+.dark-theme {
+  color: $dark-text;
+
+  h1 {
+    color: $dark-heading;
+  }
+
+  .subtitle {
+    color: $dark-subheading;
+  }
+
+  h2 {
+    color: $dark-accent;
+    border-bottom: 2px solid $dark-border;
+  }
+
+  h3 {
+    color: $dark-heading;
+  }
+
+  .feature-card {
+    background-color: $dark-card-bg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .code-block {
+    background-color: $dark-code-bg;
+  }
+
+  code {
+    color: $dark-code-text;
+  }
+}
+
+// Common styles that don't change with theme
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  flex: 1 1 300px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.code-block {
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.theme-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.theme-card {
+  flex: 1 1 400px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.theme-card:hover {
+  transform: translateY(-5px);
+}
+
+.theme-card.dark {
+  background-color: $dark-card-bg;
+  color: white;
+}
+
+.theme-card.dark h3 {
+  color: $dark-code-text;
+}
+
+.theme-card.dark .code-block {
+  background-color: $dark-code-bg;
+}
+
+.theme-card.dark code {
+  color: $dark-code-text;
+}
+
+.theme-card.light {
+  background-color: #eeeeee;
+}
+
+.theme-card.light h3 {
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .features {
+    flex-direction: column;
+  }
+  
+  .theme-examples {
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
