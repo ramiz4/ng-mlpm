@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MlpmComponent, MenuColorTheme, MenuItem } from '../../../mlpm/src/public-api';
@@ -6,7 +6,7 @@ import { MlpmComponent, MenuColorTheme, MenuItem } from '../../../mlpm/src/publi
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MlpmComponent],
+  imports: [NgClass, RouterOutlet, MlpmComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
