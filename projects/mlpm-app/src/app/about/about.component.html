@@ -1,76 +1,102 @@
-<div class="about-container">
-  <div class="about-header">
-    <h1 class="title">About MLPM Workspace</h1>
-    <div class="badge">
-      <span class="badge-text">Angular 17+</span>
+<div class="container">
+  <header>
+    <h1>About MLPM Workspace</h1>
+    <p class="subtitle">
+      A modern Angular component library for building better web applications
+    </p>
+  </header>
+
+  <section class="overview">
+    <h2>What is MLPM Workspace?</h2>
+    <p>
+      Welcome to the MLPM (Modern Library Package Manager) workspace, where we create innovative Angular components
+      and packages. This project serves as a showcase and development environment for building reusable, 
+      high-quality Angular components for modern web applications.
+    </p>
+
+    <div class="features">
+      <div class="card">
+        <div class="card-content">
+          <h3>Component Library</h3>
+          <p>
+            Our flagship component is the custom menu system with advanced theming capabilities, nested navigation,
+            and responsive design.
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h3>Modern Architecture</h3>
+          <p>
+            Built with Angular 17+, using standalone components and the latest best practices.
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h3>Customizable Design</h3>
+          <p>
+            The workspace features a robust theming system that allows for easy customization of components.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="feature-roadmap">
+    <h2>Feature Roadmap</h2>
+    <p>
+      Our library is continuously evolving with new features and improvements:
+    </p>
+    <div class="code-block">
+      <pre><code>{{libraryFeatures|json}}</code></pre>
+    </div>
+  </section>
+
+  <section class="customization">
+    <h2>Theming System</h2>
+    <p>
+      MLPM offers theming through a simple interface. Here are examples of dark
+      and light themes:
+    </p>
+
+    <div class="theme-examples">
+      <div class="card dark-card">
+        <div class="card-content">
+          <h3>Dark Theme</h3>
+          <div class="code-block">
+            <pre><code>{{darkTheme|json}}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="card light-card">
+        <div class="card-content">
+          <h3>Light Theme</h3>
+          <div class="code-block">
+            <pre><code>{{lightTheme|json}}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="future-development">
+    <h2>Future Development</h2>
+    <p>
+      This workspace will continue to grow with more Angular packages including:
+    </p>
+    <ul class="feature-list">
+      <li>Data visualization components</li>
+      <li>Form builder utilities</li>
+      <li>Advanced animation libraries</li>
+      <li>State management solutions</li>
+      <li>Accessibility-focused components</li>
+    </ul>
+  </section>
   
-  <div class="about-content">
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa fa-rocket"></i>
-      </div>
-      <div class="card-content">
-        <h2>Modern Angular Packages</h2>
-        <p>
-          Welcome to the MLPM (Modern Library Package Manager) workspace, where we create innovative Angular components
-          and packages. This project serves as a showcase and development environment for building reusable, 
-          high-quality Angular components for modern web applications.
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa fa-puzzle-piece"></i>
-      </div>
-      <div class="card-content">
-        <h2>Component Library</h2>
-        <p>
-          Our flagship component is the custom menu system with advanced theming capabilities, nested navigation,
-          and responsive design. The workspace is structured to allow for more components to be added in the future,
-          creating a comprehensive library for Angular developers.
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa fa-paint-brush"></i>
-      </div>
-      <div class="card-content">
-        <h2>Theming System</h2>
-        <p>
-          The workspace features a robust theming system that allows for easy customization of components.
-          Switch between light and dark themes with ease, and create your own custom color schemes to match
-          your brand identity.
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa fa-code"></i>
-      </div>
-      <div class="card-content">
-        <h2>Future Development</h2>
-        <p>
-          This workspace will continue to grow with more fancy Angular packages including:
-        </p>
-        <ul class="feature-list">
-          <li><i class="fa fa-check-circle"></i> Data visualization components</li>
-          <li><i class="fa fa-check-circle"></i> Form builder utilities</li>
-          <li><i class="fa fa-check-circle"></i> Advanced animation libraries</li>
-          <li><i class="fa fa-check-circle"></i> State management solutions</li>
-          <li><i class="fa fa-check-circle"></i> Accessibility-focused components</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="info-box">
-      <p class="version">Current Version: 1.0.0</p>
-      <p class="date">Last Updated: {{currentDate | date:'longDate'}}</p>
-    </div>
-  </div>
+  <footer>
+    <p class="version">Current Version: 1.0.0</p>
+    <p class="date">Last Updated: {{currentDate | date:'longDate'}}</p>
+  </footer>
 </div>
