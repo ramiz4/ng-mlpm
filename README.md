@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 
+## Demo
+
+Check out the live demo of this project at: [https://ramiz4.github.io/ng-mlpm/home](https://ramiz4.github.io/ng-mlpm/home)
+
 ## Development server
 
 To start a local development server, run:
