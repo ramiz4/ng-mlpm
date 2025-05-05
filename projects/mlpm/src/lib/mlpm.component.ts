@@ -76,7 +76,7 @@ export class MlpmComponent {
   }
 
   // This method simply returns the icon class as-is
-  getIconName(iconClass: string): string {
+  getIconName(iconClass?: string): string {
     return iconClass || '';
   }
 
