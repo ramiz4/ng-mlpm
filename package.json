@@ -14,7 +14,8 @@
     "pack:lib": "cd dist/mlpm && pnpm pack",
     "publish:lib": "cd dist/mlpm && pnpm publish",
     "deploy:gh-pages": "ng build mlpm-app --base-href=\"/ng-mlpm/\"",
-    "deploy": "pnpm run build:lib && pnpm run deploy:gh-pages && npx gh-pages -d dist/mlpm-app"
+    "copy:404": "cp dist/mlpm-app/browser/index.html dist/mlpm-app/browser/404.html",
+    "deploy": "pnpm run build:lib && pnpm run deploy:gh-pages && pnpm run copy:404 && npx gh-pages -d dist/mlpm-app/browser"
   },
   "private": true,
   "dependencies": {
