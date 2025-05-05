@@ -3,19 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
-    "build": "npm run build:all",
-    "build:all": "npm run build:lib && npm run build:app",
+    "build": "pnpm build:all",
+    "build:all": "pnpm build:lib && pnpm build:app",
     "build:lib": "ng build mlpm",
     "build:app": "ng build mlpm-app",
     "watch": "ng build --watch --configuration development",
-    "test": "npm run test:all",
-    "test:all": "npm run test:lib && npm run test:app",
+    "test": "pnpm test:all",
+    "test:all": "pnpm test:lib && pnpm test:app",
     "test:lib": "ng test mlpm --watch=false --browsers=ChromeHeadless",
     "test:app": "ng test mlpm-app --watch=false --browsers=ChromeHeadless",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
-    "pack:lib": "cd dist/mlpm && npm pack",
-    "publish:lib": "cd dist/mlpm && npm publish"
+    "pack:lib": "cd dist/mlpm && pnpm pack",
+    "publish:lib": "cd dist/mlpm && pnpm publish"
   },
   "private": true,
   "dependencies": {

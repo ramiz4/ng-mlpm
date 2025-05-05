@@ -1,0 +1,7 @@
+auto-install-peers=true
+prefer-workspace-packages=true
+save-exact=true
+use-node-version=18
+public-hoist-pattern[]=*eslint*
+public-hoist-pattern[]=*prettier*
+approve-builds=["@parcel/watcher", "esbuild", "lmdb", "msgpackr-extract"]
