@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import {
   MenuColorTheme,
   MenuItem,
   MlpmComponent,
 } from '../../../mlpm/src/public-api';
 import { AppComponent } from './app.component';
+import { ThemeService } from './theme.service';
 
 // Mock for the MlpmComponent
 @Component({
@@ -21,16 +23,34 @@ class MockMlpmComponent {
 
 describe('AppComponent', () => {
   let routerSpy: jasmine.SpyObj<Router>;
+  let themeServiceSpy: jasmine.SpyObj<ThemeService>;
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     // Create router spy
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    
+    // Create theme service spy with proper getter
+    themeServiceSpy = jasmine.createSpyObj('ThemeService', 
+      ['toggleTheme'], 
+      {
+        theme$: new BehaviorSubject('dark').asObservable()
+      }
+    );
+    
+    // Set up the currentTheme getter with a spy
+    const themeGetter = jasmine.createSpy('currentThemeGetter').and.returnValue('dark');
+    Object.defineProperty(themeServiceSpy, 'currentTheme', {
+      get: themeGetter
+    });
 
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [{ provide: Router, useValue: routerSpy }],
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        { provide: ThemeService, useValue: themeServiceSpy }
+      ],
     })
       .overrideComponent(AppComponent, {
         remove: { imports: [MockMlpmComponent] },
@@ -48,33 +68,57 @@ describe('AppComponent', () => {
   });
 
   it('should have the dark theme by default', () => {
-    expect(component.theme).toBeTrue();
+    expect(themeServiceSpy.currentTheme).toBe('dark');
     expect(component.customTheme).toEqual(component.darkTheme);
   });
 
   it('should toggle theme from dark to light', () => {
-    // Initially set to dark theme
-    expect(component.theme).toBeTrue();
+    // Get reference to the theme getter spy
+    const themeGetter = Object.getOwnPropertyDescriptor(themeServiceSpy, 'currentTheme')?.get as jasmine.Spy;
+    
+    // Initially dark theme
     expect(component.customTheme).toEqual(component.darkTheme);
+
+    // Setup the getter to return light after toggle
+    themeGetter.and.returnValue('light');
 
     // Toggle theme
     component.toggleTheme();
 
+    // Should call service method
+    expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
+    
+    // Force component to update customTheme
+    fixture.detectChanges();
+    
     // Should now be light theme
-    expect(component.theme).toBeFalse();
     expect(component.customTheme).toEqual(component.lightTheme);
   });
 
   it('should toggle theme from light to dark', () => {
-    // First set to light theme
-    component.theme = false;
+    // Get reference to the theme getter spy
+    const themeGetter = Object.getOwnPropertyDescriptor(themeServiceSpy, 'currentTheme')?.get as jasmine.Spy;
+    
+    // Set to return light initially
+    themeGetter.and.returnValue('light');
+    
+    // Force component to update customTheme to light
     component.customTheme = component.lightTheme;
-
+    fixture.detectChanges();
+    
+    // Change spy to return dark after toggle
+    themeGetter.and.returnValue('dark');
+    
     // Toggle theme
     component.toggleTheme();
-
+    
+    // Should call service method
+    expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
+    
+    // Force component to update customTheme
+    fixture.detectChanges();
+    
     // Should now be dark theme
-    expect(component.theme).toBeTrue();
     expect(component.customTheme).toEqual(component.darkTheme);
   });
 
