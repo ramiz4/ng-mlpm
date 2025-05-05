@@ -12,7 +12,7 @@
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "pack:lib": "cd dist/mlpm && pnpm pack",
-    "publish:lib": "cd dist/mlpm && pnpm publish",
+    "publish:lib": "cd dist/mlpm && pnpm publish --no-git-checks",
     "deploy:gh-pages": "ng build mlpm-app --base-href=\"/ng-mlpm/\"",
     "copy:404": "cp dist/mlpm-app/browser/index.html dist/mlpm-app/browser/404.html",
     "deploy": "pnpm run build:lib && pnpm run deploy:gh-pages && pnpm run copy:404 && npx gh-pages -d dist/mlpm-app/browser"
