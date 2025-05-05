@@ -1,21 +1,17 @@
+import { AsyncPipe, JsonPipe, NgClass, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { AppComponent } from '../app.component';
-import { JsonPipe, NgClass } from '@angular/common';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-home',
-  imports: [NgClass, JsonPipe],
+  imports: [NgIf, AsyncPipe, NgClass, JsonPipe],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  // Get a reference to the parent AppComponent to access theme
-  private appComponent = inject(AppComponent, { optional: true });
+  private readonly themeService = inject(ThemeService);
 
-  // Access the current theme state
-  get isDarkTheme(): boolean {
-    return this.appComponent?.isDarkTheme ?? true;
-  }
+  theme$ = this.themeService.theme$;
 
   // Example menu items that could be used with MLPM
   exampleMenuItems = [
@@ -34,28 +30,24 @@ export class HomeComponent {
     },
   ];
 
-  // Use themes from AppComponent
+  // Theme objects
   get darkTheme() {
-    return (
-      this.appComponent?.darkTheme ?? {
-        primary: '#212121', // Dark background
-        secondary: '#424242', // Slightly lighter background
-        text: '#ffffff', // White text
-        accent: '#ff4081', // Pink accent
-        hover: '#616161', // Hover color
-      }
-    );
+    return {
+      primary: '#212121', // Dark background
+      secondary: '#424242', // Slightly lighter background
+      text: '#ffffff', // White text
+      accent: '#ff4081', // Pink accent
+      hover: '#616161', // Hover color
+    };
   }
 
   get lightTheme() {
-    return (
-      this.appComponent?.lightTheme ?? {
-        primary: '#ffffff', // Light background
-        secondary: '#f5f5f5', // Slightly darker background
-        text: '#000000', // Black text
-        accent: '#ff4081', // Pink accent
-        hover: '#eeeeee', // Hover color
-      }
-    );
+    return {
+      primary: '#ffffff', // Light background
+      secondary: '#f5f5f5', // Slightly darker background
+      text: '#000000', // Black text
+      accent: '#ff4081', // Pink accent
+      hover: '#eeeeee', // Hover color
+    };
   }
 }

@@ -5,11 +5,9 @@
   [menuItems]="menuItems"
   [colorTheme]="customTheme"
   (linkClick)="handleMenuLinkClick($event)"
+  *ngIf="theme$ | async as theme"
 >
-  <div
-    class="menu-content"
-    [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'"
-  >
+  <div class="menu-content">
     <div class="button-container">
       <button class="menu-toggle-button" (click)="toggleMenu()">
         <i class="fa fa-bars"></i> Toggle Menu
@@ -21,15 +19,15 @@
           type="checkbox"
           id="themeToggle"
           class="theme-toggle-checkbox"
-          [checked]="!isDarkTheme"
+          [checked]="theme === 'light'"
           (change)="toggleTheme()"
         />
         <label for="themeToggle" class="theme-toggle">
           <i
             class="toggle-icon"
             [class.fa]="true"
-            [class.fa-moon-o]="isDarkTheme"
-            [class.fa-sun-o]="!isDarkTheme"
+            [class.fa-moon-o]="theme === 'dark'"
+            [class.fa-sun-o]="theme === 'light'"
           ></i>
         </label>
       </div>

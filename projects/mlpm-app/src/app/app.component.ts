@@ -1,20 +1,26 @@
-import { NgClass } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { Component, inject, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { MlpmComponent, MenuColorTheme, MenuItem } from '../../../mlpm/src/public-api';
+import {
+  MenuColorTheme,
+  MenuItem,
+  MlpmComponent,
+} from '../../../mlpm/src/public-api';
 import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [NgClass, RouterOutlet, MlpmComponent],
+  imports: [NgIf, AsyncPipe, RouterOutlet, MlpmComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   @ViewChild(MlpmComponent) menu!: MlpmComponent;
 
-  isDarkTheme = true;
+  private readonly router = inject(Router);
+  private readonly themeService = inject(ThemeService);
+
+  theme$ = this.themeService.theme$;
 
   // Dark theme definition
   darkTheme: MenuColorTheme = {
@@ -35,7 +41,7 @@ export class AppComponent {
   };
 
   // Current active theme
-  customTheme: MenuColorTheme = this.darkTheme;
+  customTheme = this.themeService.currentTheme === 'dark' ? this.darkTheme : this.lightTheme;
 
   menuItems: MenuItem[] = [
     {
@@ -254,14 +260,6 @@ export class AppComponent {
     },
   ];
 
-  constructor(
-    private readonly router: Router,
-    private themeService: ThemeService
-  ) {
-    // Initialize the theme service with the current theme
-    this.themeService.setDarkTheme(this.isDarkTheme);
-  }
-
   // Handler for menu link clicks
   handleMenuLinkClick(item: MenuItem): void {
     // Users can implement their own custom logic here
@@ -287,10 +285,11 @@ export class AppComponent {
 
   // Toggle between dark and light themes
   toggleTheme(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    this.customTheme = this.isDarkTheme ? this.darkTheme : this.lightTheme;
-    // Update the theme service
-    this.themeService.setDarkTheme(this.isDarkTheme);
+    this.themeService.toggleTheme();
+    this.customTheme =
+      this.themeService.currentTheme === 'dark'
+        ? this.darkTheme
+        : this.lightTheme;
   }
 
   // Example method to programmatically toggle the menu

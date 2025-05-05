@@ -48,33 +48,33 @@ describe('AppComponent', () => {
   });
 
   it('should have the dark theme by default', () => {
-    expect(component.isDarkTheme).toBeTrue();
+    expect(component.theme).toBeTrue();
     expect(component.customTheme).toEqual(component.darkTheme);
   });
 
   it('should toggle theme from dark to light', () => {
     // Initially set to dark theme
-    expect(component.isDarkTheme).toBeTrue();
+    expect(component.theme).toBeTrue();
     expect(component.customTheme).toEqual(component.darkTheme);
 
     // Toggle theme
     component.toggleTheme();
 
     // Should now be light theme
-    expect(component.isDarkTheme).toBeFalse();
+    expect(component.theme).toBeFalse();
     expect(component.customTheme).toEqual(component.lightTheme);
   });
 
   it('should toggle theme from light to dark', () => {
     // First set to light theme
-    component.isDarkTheme = false;
+    component.theme = false;
     component.customTheme = component.lightTheme;
 
     // Toggle theme
     component.toggleTheme();
 
     // Should now be dark theme
-    expect(component.isDarkTheme).toBeTrue();
+    expect(component.theme).toBeTrue();
     expect(component.customTheme).toEqual(component.darkTheme);
   });
 
