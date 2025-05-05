@@ -14,7 +14,7 @@
 
 ## 🔥 Live Demo
 
-Experience the component in action: [Live Demo](https://ramiz4.github.io/ng-mlpm/home)
+Experience the component in action: [Live Demo](https://ramiz4.github.io/ng-mlpm)
 
 ## 🎨 Features
 
