@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MlpmComponent, MenuColorTheme, MenuItem } from '../../../mlpm/src/public-api';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -253,7 +254,13 @@ export class AppComponent {
     },
   ];
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private themeService: ThemeService
+  ) {
+    // Initialize the theme service with the current theme
+    this.themeService.setDarkTheme(this.isDarkTheme);
+  }
 
   // Handler for menu link clicks
   handleMenuLinkClick(item: MenuItem): void {
@@ -282,6 +289,8 @@ export class AppComponent {
   toggleTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
     this.customTheme = this.isDarkTheme ? this.darkTheme : this.lightTheme;
+    // Update the theme service
+    this.themeService.setDarkTheme(this.isDarkTheme);
   }
 
   // Example method to programmatically toggle the menu
