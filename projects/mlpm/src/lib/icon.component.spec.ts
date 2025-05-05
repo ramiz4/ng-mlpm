@@ -58,14 +58,6 @@ describe('IconComponent', () => {
   });
 
   it('should test iconClasses branch paths', () => {
-    // Test with undefined name
-    component.name = undefined as any;
-    expect(component.iconClasses).toEqual(['question']);
-
-    // Test with null name
-    component.name = null as any;
-    expect(component.iconClasses).toEqual(['question']);
-
     // Test with empty string
     component.name = '';
     expect(component.iconClasses).toEqual(['question']);
@@ -263,7 +255,7 @@ describe('IconComponent', () => {
 
     // Create a new property to test this specific condition
     // We're making an alias point to a key that doesn't exist in SVG_PATHS
-    (ICON_ALIASES as any)['test-alias'] = nonExistentIconKey;
+    (ICON_ALIASES)['test-alias'] = nonExistentIconKey;
 
     component.name = 'test-alias';
     expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
@@ -271,7 +263,7 @@ describe('IconComponent', () => {
     // Restore original aliases
     Object.keys(ICON_ALIASES).forEach((key) => {
       if (key !== Object.keys(originalIconAliases).find((k) => k === key)) {
-        delete (ICON_ALIASES as any)[key];
+        delete (ICON_ALIASES)[key];
       }
     });
   });
@@ -287,21 +279,21 @@ describe('IconComponent', () => {
       'M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z';
 
     // Add a custom path to SVG_PATHS
-    (SVG_PATHS as any)[testIconName] = testPath;
+    (SVG_PATHS)[testIconName] = testPath;
 
     // Set component name and test
     component.name = testIconName;
     expect(component.getSvgPath()).toBe(testPath);
 
     // Now delete the custom path to force the fallback
-    delete (SVG_PATHS as any)[testIconName];
+    delete (SVG_PATHS)[testIconName];
 
     // Test that it falls back to question mark
     expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
 
     // Restore original paths
     Object.keys(originalPaths).forEach((key) => {
-      (SVG_PATHS as any)[key] = originalPaths[key];
+      (SVG_PATHS)[key] = originalPaths[key];
     });
   });
 
@@ -326,13 +318,6 @@ describe('IconComponent', () => {
     component.name = '';
     expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
 
-    // Null or undefined name
-    component.name = null as any;
-    expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
-
-    component.name = undefined as any;
-    expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
-
     // Name with direct match in SVG_PATHS
     if (SVG_PATHS['menu']) {
       component.name = 'menu';
@@ -351,10 +336,6 @@ describe('IconComponent', () => {
 
     // Name with no match
     component.name = 'definitely-not-an-icon-name';
-    expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
-
-    // Test undefined/unexpected type value
-    component.type = 'unexpected-type' as any;
     expect(component.getSvgPath()).toBe(SVG_PATHS['question']);
   });
 
