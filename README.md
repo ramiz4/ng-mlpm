@@ -255,23 +255,18 @@ In your template:
 
 ### Inputs
 
-| Input      | Type           | Description                                | Default   |
-| ---------- | -------------- | ------------------------------------------ | --------- |
-| title      | string         | The title displayed at the top of the menu | 'Menu'    |
-| titleIcon  | string         | Icon name for the title                    | 'menu'    |
-| menuItems  | MenuItem[]     | Array of menu items to display             | []        |
-| colorTheme | MenuColorTheme | Custom color theme for the menu            | undefined |
-| showIcons  | boolean        | Whether to show icons next to menu items   | true      |
-| width      | string         | Width of the menu component                | '280px'   |
-| maxHeight  | string         | Maximum height of the menu component       | '80vh'    |
+| Input      | Type           | Description                                | Default           |
+| ---------- | -------------- | ------------------------------------------ | ----------------- |
+| title      | string         | The title displayed at the top of the menu | 'Menu'            |
+| titleIcon  | string         | Icon name for the title                    | 'menu'            |
+| menuItems  | MenuItem[]     | Array of menu items to display             | []                |
+| colorTheme | MenuColorTheme | Custom color theme for the menu            | defaultColorTheme |
 
 ### Outputs
 
 | Output    | Type                   | Description                                     |
 | --------- | ---------------------- | ----------------------------------------------- |
 | linkClick | EventEmitter<MenuItem> | Emitted when a menu item with a link is clicked |
-| menuOpen  | EventEmitter<void>     | Emitted when the menu is opened                 |
-| menuClose | EventEmitter<void>     | Emitted when the menu is closed                 |
 
 ### Interfaces
 
