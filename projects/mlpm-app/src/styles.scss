@@ -44,21 +44,17 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Roboto", sans-serif;
-}
-
-// Theme-specific body styles
-body {
   background-color: var(--primary-background);
   color: var(--primary-text);
 }
 
-// Fancy scrollbar styles
+// Custom scrollbar styles
 * {
-  // For Firefox
+  // Firefox scrollbar
   scrollbar-width: thin;
   scrollbar-color: var(--primary-accent) var(--secondary-background);
 
-  // For Chrome, Safari, and Opera
+  // Chrome, Safari, and Opera scrollbars
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -133,10 +129,8 @@ body {
 }
 
 /*----------------------------------------------
- * LAYOUT COMPONENTS
+ * TYPOGRAPHY
  *----------------------------------------------*/
-
-// Header styles
 h1 {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-sm);
@@ -160,7 +154,9 @@ h2 {
   }
 }
 
-// Grid layouts
+/*----------------------------------------------
+ * LAYOUT COMPONENTS
+ *----------------------------------------------*/
 .features,
 .theme-examples {
   display: grid;
@@ -172,80 +168,19 @@ h2 {
 /*----------------------------------------------
  * UI COMPONENTS
  *----------------------------------------------*/
-// Card styles
+// Card component
 .card {
   background-color: var(--secondary-background);
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
+  padding: 0 var(--spacing-md);
   transition: transform var(--transition-duration),
     box-shadow var(--transition-duration);
-    padding: 0 var(--spacing-md);
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   }
-}
-
-// Button styles
-.button,
-.return-button {
-  padding: 12px 24px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &.primary-btn {
-    background-color: var(--primary-accent);
-    color: #ffffff;
-    border: 2px solid var(--secondary-accent);
-    transition: all 0.3s ease;
-    &:hover {
-      background-color: var(--tertiary-accent);
-      color: #ffffff;
-    }
-    &:active {
-      background-color: var(--tertiary-accent);
-    }
-  }
-
-  &.secondary-btn {
-    background-color: transparent;
-    border: 2px solid var(--tertiary-accent);
-    color: var(--tertiary-accent);
-    transition: all 0.3s ease;
-    &:hover {
-      background-color: rgba(255, 64, 129, 0.1);
-      color: var(--primary-text);
-    }
-    &:active {
-      background-color: rgba(255, 64, 129, 0.2);
-    }
-  }
-}
-
-// Buttons container
-.buttons-container {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
 }
 
 // Code block styles
@@ -258,22 +193,13 @@ h2 {
 
   pre {
     margin: 0;
+
     code {
       font-family: "Consolas", "Monaco", monospace;
       font-size: 0.9rem;
       line-height: 1.5;
     }
   }
-}
-
-// Info box
-.info-box {
-  grid-column: 1 / -1;
-  text-align: center;
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-sm);
-  border-radius: var(--border-radius);
-  border: 1px dashed #ccc;
 }
 
 .version,
@@ -284,11 +210,12 @@ h2 {
 /*----------------------------------------------
  * PAGE-SPECIFIC STYLES
  *----------------------------------------------*/
-// Not found page
+// 404 Not found page
 .not-found-container {
   display: flex;
   justify-content: center;
   margin-top: 6rem;
+
   .error-text {
     display: flex;
     flex-direction: column;
@@ -319,5 +246,69 @@ h2 {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  // Buttons container
+  .buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+
+    // Button styles
+    .button,
+    .return-button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      // Primary button variant
+      &.primary-btn {
+        background-color: var(--primary-accent);
+        color: #ffffff;
+        border: 2px solid var(--secondary-accent);
+
+        &:hover {
+          background-color: var(--tertiary-accent);
+        }
+
+        &:active {
+          background-color: var(--tertiary-accent);
+        }
+      }
+
+      // Secondary button variant
+      &.secondary-btn {
+        background-color: transparent;
+        border: 2px solid var(--tertiary-accent);
+        color: var(--tertiary-accent);
+
+        &:hover {
+          background-color: rgba(255, 64, 129, 0.1);
+          color: var(--primary-text);
+        }
+
+        &:active {
+          background-color: rgba(255, 64, 129, 0.2);
+        }
+      }
+    }
   }
 }
