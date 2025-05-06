@@ -2,6 +2,24 @@ import { TestBed } from '@angular/core/testing';
 import { firstValueFrom, take, toArray } from 'rxjs';
 import { ThemeService } from './theme.service';
 
+/**
+ * Creates a mock implementation for window.matchMedia
+ * to avoid ESLint no-empty-function errors
+ */
+function createMatchMediaMock(prefersDarkMode: boolean): typeof window.matchMedia {
+  return (query: string) => ({
+    matches: query === '(prefers-color-scheme: dark)' ? prefersDarkMode : !prefersDarkMode,
+    media: query,
+    onchange: null,
+    // Use Jasmine spies instead of jest.fn() to satisfy ESLint
+    addListener: jasmine.createSpy('addListener'),
+    removeListener: jasmine.createSpy('removeListener'),
+    addEventListener: jasmine.createSpy('addEventListener'),
+    removeEventListener: jasmine.createSpy('removeEventListener'),
+    dispatchEvent: () => true
+  });
+}
+
 describe('ThemeService', () => {
   let service: ThemeService;
   let originalMatchMedia: typeof window.matchMedia;
@@ -20,16 +38,7 @@ describe('ThemeService', () => {
   describe('with dark mode preference', () => {
     beforeEach(() => {
       // Mock matchMedia to return 'prefers dark mode'
-      window.matchMedia = (query: string) => ({
-        matches: query === '(prefers-color-scheme: dark)' ? true : false,
-        media: query,
-        onchange: null,
-        addListener: () => {},
-        removeListener: () => {},
-        addEventListener: () => {},
-        removeEventListener: () => {},
-        dispatchEvent: () => true
-      });
+      window.matchMedia = createMatchMediaMock(true);
 
       TestBed.configureTestingModule({});
       service = TestBed.inject(ThemeService);
@@ -79,16 +88,7 @@ describe('ThemeService', () => {
   describe('with light mode preference', () => {
     beforeEach(() => {
       // Mock matchMedia to return 'prefers light mode'
-      window.matchMedia = (query: string) => ({
-        matches: query === '(prefers-color-scheme: dark)' ? false : true,
-        media: query,
-        onchange: null,
-        addListener: () => {},
-        removeListener: () => {},
-        addEventListener: () => {},
-        removeEventListener: () => {},
-        dispatchEvent: () => true
-      });
+      window.matchMedia = createMatchMediaMock(false);
 
       TestBed.configureTestingModule({});
       service = TestBed.inject(ThemeService);
@@ -114,16 +114,7 @@ describe('ThemeService', () => {
   describe('theme manipulation', () => {
     beforeEach(() => {
       // Mock matchMedia to ensure consistent behavior
-      window.matchMedia = (query: string) => ({
-        matches: query === '(prefers-color-scheme: dark)' ? false : true, // Default to light theme
-        media: query,
-        onchange: null,
-        addListener: () => {},
-        removeListener: () => {},
-        addEventListener: () => {},
-        removeEventListener: () => {},
-        dispatchEvent: () => true
-      });
+      window.matchMedia = createMatchMediaMock(false); // Default to light theme
 
       TestBed.configureTestingModule({});
       service = TestBed.inject(ThemeService);
