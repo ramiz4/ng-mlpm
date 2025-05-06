@@ -4,115 +4,167 @@ import { ThemeService } from './theme.service';
 
 describe('ThemeService', () => {
   let service: ThemeService;
+  let originalMatchMedia: typeof window.matchMedia;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ThemeService);
+  beforeAll(() => {
+    // Store the original matchMedia function
+    originalMatchMedia = window.matchMedia;
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  afterAll(() => {
+    // Restore the original matchMedia function after all tests
+    window.matchMedia = originalMatchMedia;
   });
 
-  it('should initialize with dark theme', () => {
-    expect(service.currentTheme).toBe('dark');
-  });
+  // Standard dark mode test
+  describe('with dark mode preference', () => {
+    beforeEach(() => {
+      // Mock matchMedia to return 'prefers dark mode'
+      window.matchMedia = (query: string) => ({
+        matches: query === '(prefers-color-scheme: dark)' ? true : false,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => true
+      });
 
-  it('should toggle theme from dark to light', async () => {
-    // Verify initial state
-    expect(service.currentTheme).toBe('dark');
-
-    // Subscribe to theme$ observable to verify changes
-    const themePromise = firstValueFrom(service.theme$);
-
-    // Toggle theme
-    service.toggleTheme();
-
-    // Verify theme was toggled
-    expect(service.currentTheme).toBe('light');
-
-    // Verify theme$ observable emitted new value
-    const theme = await themePromise;
-    expect(theme).toBe('dark'); // The first emission will be the initial value
-  });
-
-  it('should toggle theme from light to dark', () => {
-    // Set initial state to light
-    service.setTheme('light');
-    expect(service.currentTheme).toBe('light');
-
-    // Toggle theme
-    service.toggleTheme();
-
-    // Verify theme was toggled
-    expect(service.currentTheme).toBe('dark');
-  });
-
-  it('should set theme directly', async () => {
-    // Subscribe to theme changes
-    const themePromise = firstValueFrom(service.theme$);
-
-    // Set theme to light
-    service.setTheme('light');
-
-    // Verify current theme
-    expect(service.currentTheme).toBe('light');
-
-    // Set theme to dark
-    service.setTheme('dark');
-
-    // Verify current theme
-    expect(service.currentTheme).toBe('dark');
-
-    // Verify theme$ observable emitted correctly
-    const theme = await themePromise;
-    expect(theme).toBe('dark'); // The first emission will be the initial value
-  });
-
-  it('should emit theme changes through theme$ observable', (done) => {
-    // Collect multiple emissions from the observable
-    service.theme$.pipe(take(3), toArray()).subscribe((themes) => {
-      // Should have 3 emissions: initial 'dark', then 'light', then 'dark' again
-      expect(themes).toEqual(['dark', 'light', 'dark']);
-      done();
+      TestBed.configureTestingModule({});
+      service = TestBed.inject(ThemeService);
     });
 
-    // Trigger theme changes
-    service.toggleTheme(); // dark -> light
-    service.toggleTheme(); // light -> dark
+    it('should be created', () => {
+      expect(service).toBeTruthy();
+    });
+
+    it('should initialize with dark theme when user prefers dark mode', () => {
+      expect(service.currentTheme).toBe('dark');
+    });
+
+    it('should toggle theme from dark to light', async () => {
+      // Verify initial state
+      expect(service.currentTheme).toBe('dark');
+
+      // Subscribe to theme$ observable to verify changes
+      const themePromise = firstValueFrom(service.theme$);
+
+      // Toggle theme
+      service.toggleTheme();
+
+      // Verify theme was toggled
+      expect(service.currentTheme).toBe('light');
+
+      // Verify theme$ observable emitted new value
+      const theme = await themePromise;
+      expect(theme).toBe('dark'); // The first emission will be the initial value
+    });
+
+    it('should emit theme changes through theme$ observable', (done) => {
+      // Collect multiple emissions from the observable
+      service.theme$.pipe(take(3), toArray()).subscribe((themes) => {
+        // Should have 3 emissions: initial 'dark', then 'light', then 'dark' again
+        expect(themes).toEqual(['dark', 'light', 'dark']);
+        done();
+      });
+
+      // Trigger theme changes
+      service.toggleTheme(); // dark -> light
+      service.toggleTheme(); // light -> dark
+    });
   });
 
-  // Additional test to specifically target the branch in toggleTheme
-  it('should handle toggleTheme for both theme states', () => {
-    // First verify it's dark and toggle to light
-    expect(service.currentTheme).toBe('dark');
-    service.toggleTheme();
-    expect(service.currentTheme).toBe('light');
+  // Standard light mode test
+  describe('with light mode preference', () => {
+    beforeEach(() => {
+      // Mock matchMedia to return 'prefers light mode'
+      window.matchMedia = (query: string) => ({
+        matches: query === '(prefers-color-scheme: dark)' ? false : true,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => true
+      });
 
-    // Then toggle back to dark
-    service.toggleTheme();
-    expect(service.currentTheme).toBe('dark');
+      TestBed.configureTestingModule({});
+      service = TestBed.inject(ThemeService);
+    });
 
-    // Force it to light again
-    service.setTheme('light');
-    expect(service.currentTheme).toBe('light');
+    it('should initialize with light theme when user prefers light mode', () => {
+      expect(service.currentTheme).toBe('light');
+    });
 
-    // And toggle back to dark
-    service.toggleTheme();
-    expect(service.currentTheme).toBe('dark');
+    it('should toggle theme from light to dark', () => {
+      // Verify initial state
+      expect(service.currentTheme).toBe('light');
+
+      // Toggle theme
+      service.toggleTheme();
+
+      // Verify theme was toggled
+      expect(service.currentTheme).toBe('dark');
+    });
   });
 
-  it('should thoroughly test all toggle branches', () => {
-    // Test with theme explicitly set to 'dark'
-    service.setTheme('dark');
-    expect(service.currentTheme).toBe('dark');
-    service.toggleTheme();
-    expect(service.currentTheme).toBe('light');
+  // General theme manipulation tests with no preference
+  describe('theme manipulation', () => {
+    beforeEach(() => {
+      // Mock matchMedia to ensure consistent behavior
+      window.matchMedia = (query: string) => ({
+        matches: query === '(prefers-color-scheme: dark)' ? false : true, // Default to light theme
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => true
+      });
 
-    // Explicitly test the other branch
-    service.setTheme('light');
-    expect(service.currentTheme).toBe('light');
-    service.toggleTheme();
-    expect(service.currentTheme).toBe('dark');
+      TestBed.configureTestingModule({});
+      service = TestBed.inject(ThemeService);
+    });
+
+    it('should set theme directly', async () => {
+      // First verify the initial theme
+      expect(service.currentTheme).toBe('light');
+      
+      // Subscribe to theme changes
+      const themePromise = firstValueFrom(service.theme$);
+
+      // Set theme to dark
+      service.setTheme('dark');
+
+      // Verify current theme
+      expect(service.currentTheme).toBe('dark');
+
+      // Set theme to light
+      service.setTheme('light');
+
+      // Verify current theme
+      expect(service.currentTheme).toBe('light');
+
+      // Verify theme$ observable emitted correctly
+      const theme = await themePromise;
+      expect(theme).toBe('light'); // The first emission will be the initial value
+    });
+
+    it('should thoroughly test all toggle branches', () => {
+      // Test with theme explicitly set to 'dark'
+      service.setTheme('dark');
+      expect(service.currentTheme).toBe('dark');
+      service.toggleTheme();
+      expect(service.currentTheme).toBe('light');
+
+      // Explicitly test the other branch
+      service.setTheme('light');
+      expect(service.currentTheme).toBe('light');
+      service.toggleTheme();
+      expect(service.currentTheme).toBe('dark');
+    });
   });
 });
