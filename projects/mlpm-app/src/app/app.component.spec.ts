@@ -17,7 +17,7 @@ import { ThemeService } from './theme.service';
 })
 class MockMlpmComponent {
   @Input() menuItems: MenuItem[] = [];
-  @Input() customTheme: MenuColorTheme | undefined;
+  @Input() customTheme: Partial<MenuColorTheme> | undefined;
   @Input() collapsed = false;
 }
 
@@ -29,19 +29,33 @@ describe('AppComponent', () => {
   
   // Mock theme objects for testing
   const mockDarkTheme: MenuColorTheme = {
-    primary: '#212121',
-    secondary: '#424242',
-    text: '#ffffff',
-    accent: '#ff4081',
-    hover: '#616161'
+    primaryBackground: '#212121',
+    secondaryBackground: '#424242',
+    tertiaryBackground: '#303030',
+    primaryText: '#ffffff',
+    secondaryText: '#e0e0e0',
+    tertiaryText: '#bdbdbd',
+    primaryAccent: '#ff4081',
+    secondaryAccent: '#e91e63',
+    tertiaryAccent: '#c2185b',
+    primaryHover: '#616161',
+    secondaryHover: '#757575',
+    tertiaryHover: '#9e9e9e'
   };
   
   const mockLightTheme: MenuColorTheme = {
-    primary: '#ffffff',
-    secondary: '#f5f5f5',
-    text: '#000000',
-    accent: '#ff4081',
-    hover: '#eeeeee'
+    primaryBackground: '#ffffff',
+    secondaryBackground: '#f5f5f5',
+    tertiaryBackground: '#eeeeee',
+    primaryText: '#000000',
+    secondaryText: '#212121',
+    tertiaryText: '#424242',
+    primaryAccent: '#ff4081',
+    secondaryAccent: '#e91e63',
+    tertiaryAccent: '#c2185b',
+    primaryHover: '#eeeeee',
+    secondaryHover: '#e0e0e0',
+    tertiaryHover: '#bdbdbd'
   };
 
   beforeEach(async () => {
