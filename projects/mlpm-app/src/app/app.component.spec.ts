@@ -105,7 +105,7 @@ describe('AppComponent', () => {
       done();
     });
   });
-  
+
   it('should get theme from themeService.themeMap', () => {
     // Create a BehaviorSubject we can control
     const themeSub = new BehaviorSubject<'dark' | 'light'>('dark');
@@ -120,25 +120,24 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     
     // First verify we get the dark theme (initial value)
-    let emittedTheme: MenuColorTheme | undefined;
+    let emittedTheme: MenuColorTheme;
     const subscription = component.customMenuTheme$.subscribe(theme => {
-      emittedTheme = theme;
+      emittedTheme = theme as MenuColorTheme;
     });
     
-    expect(emittedTheme).toEqual(mockDarkTheme);
+    expect(emittedTheme!).toEqual(mockDarkTheme);
     
     // Now change to light theme
     themeSub.next('light');
     
     // Verify we now get the light theme
-    expect(emittedTheme).toEqual(mockLightTheme);
+    expect(emittedTheme!).toEqual(mockLightTheme);
     
     // Clean up
     subscription.unsubscribe();
   });
 
-  it('should toggle menu', () => {
-    // Setup the menu property
+  it('should toggle menu collapsed state', () => {
     component.menu = { collapsed: false } as MlpmComponent;
 
     // Toggle menu
