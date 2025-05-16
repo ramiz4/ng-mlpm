@@ -13,26 +13,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        cache: 'pnpm'
-    
     - name: Install pnpm
       uses: pnpm/action-setup@v3
       with:
         version: 8
         run_install: false
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
       
     - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+      run: pnpm install --no-frozen-lockfile
     
     - name: Lint
       run: pnpm lint
     
-    - name: Test
-      run: pnpm test
+    - name: Test with coverage
+      run: pnpm test:ci
     
     - name: Build library
       run: pnpm build:lib
@@ -41,10 +41,9 @@ jobs:
       run: pnpm build:app
     
     - name: Upload coverage reports
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         directory: ./coverage/
-        flags: unit-tests
         fail_ci_if_error: false
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true

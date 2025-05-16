@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Copy README.md to the library directory before commit
+pnpm run copy:readme
+git add projects/mlpm/README.md

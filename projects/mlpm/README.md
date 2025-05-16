@@ -1,214 +1,310 @@
-# @ramiz4/ng-mlpm
+# 🚀 NgMlpm - Angular Multilevel Progressive Menu
 
-![Version](https://img.shields.io/badge/version-19.0.0-blue.svg)
-![Angular](https://img.shields.io/badge/Angular-19.x-red.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+<div align="center">
+  <img src="https://img.shields.io/badge/Angular-19.2-dd0031.svg" alt="Angular Version">
+  <img src="https://img.shields.io/badge/TypeScript-5.7-007acc.svg" alt="TypeScript Version">
+  <a href="https://ramiz4.github.io/ng-mlpm/home" target="_blank">
+    <img src="https://img.shields.io/badge/Demo-Live-brightgreen.svg" alt="Live Demo">
+  </a>
+</div>
 
-A modern, lightweight UI component library for Angular applications.
+## ✨ Overview
 
-## ✨ Features
+**NgMlpm** is an elegant, highly customizable multilevel progressive menu component library for Angular applications. It provides a smooth user experience for navigating complex menu hierarchies with animated transitions and a responsive design.
 
-- 🚀 Built for Angular 19+
-- 🎨 Customizable components
-- 📱 Responsive design
-- 🔍 Accessibility focused
-- 🧩 Modular architecture
-- 🖼️ Compatible with any icon library
+## 🔥 Live Demo
 
-## 📦 Installation
+Experience the component in action: [Live Demo](https://ramiz4.github.io/ng-mlpm)
+
+## 🎨 Features
+
+- **Hierarchical Navigation** - Seamlessly navigate through nested menu structures
+- **Smooth Animations** - Enjoy fluid transitions between menu levels
+- **Customizable Themes** - Easily adapt the menu to match your application's design system
+- **Icon Support** - Integrate icons for enhanced visual navigation
+- **Responsive Design** - Works beautifully across all device sizes
+- **Standalone Components** - Built with Angular's latest standalone component architecture
+- **Lightweight** - Minimal footprint for optimal performance
+
+## 📋 Step-by-Step Usage Guide
+
+### 1. Installation
+
+Install the package using your preferred package manager:
 
 ```bash
+# Using npm
 npm install @ramiz4/ng-mlpm
+
+# Using pnpm
+pnpm add @ramiz4/ng-mlpm
+
+# Using yarn
+yarn add @ramiz4/ng-mlpm
 ```
 
-## 🔧 Usage
+### 2. Import the Component
 
-### Import the module
+Add the MlpmComponent to your standalone component or NgModule:
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MlpmComponent } from '@ramiz4/ng-mlpm';
-import { AppComponent } from './app.component';
+// In a standalone component
+import { Component } from "@angular/core";
+import { MlpmComponent } from "@ramiz4/ng-mlpm";
+
+@Component({
+  selector: "app-my-component",
+  standalone: true,
+  imports: [MlpmComponent],
+  // ...
+})
+export class MyComponent {
+  // Component logic
+}
+
+// OR in a module
+import { NgModule } from "@angular/core";
+import { MlpmComponent } from "@ramiz4/ng-mlpm";
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    MlpmComponent
+    // ...other imports
+    MlpmComponent,
   ],
-  bootstrap: [AppComponent]
+  // ...
 })
-export class AppModule { }
+export class MyModule {}
 ```
 
-### Use components in your templates
+### 3. Define Menu Items
 
-```html
-<!-- Using the main component -->
-<ng-mlpm 
-  [title]="'Main Menu'" 
-  [titleIcon]="'menu'"
-  [menuItems]="menuItems"
-  (linkClick)="handleLinkClick($event)">
-  Content goes here
-</ng-mlpm>
-```
-
-## 🧩 Available Components
-
-### MLPM Component
-
-The main component that provides menu functionality with various UI features.
-
-```html
-<ng-mlpm [menuItems]="customMenuItems" [colorTheme]="customTheme"></ng-mlpm>
-```
-
-## 🎨 Customization
-
-You can customize component appearance by:
-
-1. Passing in configuration objects
-2. Using CSS variables
-3. Extending component styles
-
-Example:
+Create a menu structure in your component:
 
 ```typescript
-// In your component
-import { MenuColorTheme, MenuItem } from '@ramiz4/ng-mlpm';
+import { Component } from "@angular/core";
+import { MlpmComponent } from "@ramiz4/ng-mlpm";
+import { MenuItem } from "@ramiz4/ng-mlpm"; // Import the interface
 
-export class AppComponent {
-  // Define your menu items
+@Component({
+  // ...
+  imports: [MlpmComponent],
+  // ...
+})
+export class YourComponent {
+  // Define your menu structure
   menuItems: MenuItem[] = [
     {
-      label: 'Dashboard',
-      icon: 'dashboard',
-      link: '/dashboard'
+      label: "Dashboard",
+      icon: "dashboard",
+      link: "/dashboard",
     },
     {
-      label: 'Settings',
-      icon: 'settings',
+      label: "Settings",
+      icon: "settings",
       children: [
+        { label: "Profile", icon: "person", link: "/settings/profile" },
+        { label: "Preferences", icon: "tune", link: "/settings/preferences" },
+      ],
+    },
+    {
+      label: "Reports",
+      icon: "bar_chart",
+      children: [
+        { label: "Annual", icon: "calendar_today", link: "/reports/annual" },
+        { label: "Monthly", icon: "date_range", link: "/reports/monthly" },
         {
-          label: 'Profile',
-          icon: 'person',
-          link: '/settings/profile'
+          label: "Custom",
+          icon: "tune",
+          children: [
+            { label: "By Region", icon: "public", link: "/reports/custom/region" },
+            { label: "By Department", icon: "people", link: "/reports/custom/department" },
+          ],
         },
-        {
-          label: 'Account',
-          icon: 'account_circle',
-          link: '/settings/account'
-        }
-      ]
-    }
+      ],
+    },
   ];
 
-  // Custom theme
-  customTheme: Partial<MenuColorTheme> = {
-    primary: '#1e3a8a',
-    accent: '#3b82f6'
-  };
-
   // Handle menu item clicks
-  handleLinkClick(item: MenuItem): void {
-    console.log('Clicked:', item.label, item.link);
+  onMenuItemClick(item: MenuItem) {
+    console.log("Menu item clicked:", item);
     // Add your navigation logic here
   }
 }
 ```
 
-## 🔣 Using Custom Icon Libraries
+### 4. Add the Component to Your Template
 
-This library is designed to work with any icon library of your choice. You can use Material Icons, Font Awesome, Bootstrap Icons, or any other icon library by simply including the appropriate CSS classes in your configuration.
-
-### Setup Your Icon Library
-
-First, install and include your preferred icon library in your project. For example, if using Font Awesome:
-
-```bash
-npm install @fortawesome/fontawesome-free
-```
-
-Then import it in your `styles.scss`:
-
-```scss
-@import '@fortawesome/fontawesome-free/css/all.css';
-```
-
-### Use Icon Classes in Your Configuration
-
-When configuring the menu items, simply use the CSS classes from your icon library:
-
-```typescript
-// Using Font Awesome icons
-menuItems: MenuItem[] = [
-  {
-    label: 'Dashboard',
-    icon: 'fas fa-tachometer-alt', // Font Awesome class
-    link: '/dashboard'
-  },
-  {
-    label: 'Settings',
-    icon: 'fas fa-cog', // Font Awesome class
-    children: [
-      {
-        label: 'Profile',
-        icon: 'fas fa-user', // Font Awesome class
-        link: '/settings/profile'
-      }
-    ]
-  }
-];
-```
-
-For the title icon, provide the CSS class for your icon:
+Use the component in your HTML template:
 
 ```html
-<ng-mlpm [titleIcon]="'fas fa-bars'"></ng-mlpm>
+<ng-mlpm [title]="'My Application'" [titleIcon]="'menu'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
 ```
 
-### Examples with Different Icon Libraries
+### 5. Customize the Theme (Optional)
 
-**Material Icons:**
+You can customize the appearance by providing a color theme:
+
 ```typescript
-// Using Material Icons
+import { Component } from '@angular/core';
+import { MlpmComponent, MenuColorTheme } from '@ramiz4/ng-mlpm';
+
+@Component({
+  // ...
+})
+export class YourComponent {
+  // ...menu items
+
+  // Define a custom theme
+  customTheme: MenuColorTheme = {
+    primary: '#2c3e50',
+    secondary: '#34495e',
+    text: '#ecf0f1',
+    accent: '#3498db',
+    hover: '#3e5871'
+  };
+}
+```
+
+Then apply it to the component:
+
+```html
+<ng-mlpm [title]="'My Application'" [titleIcon]="'menu'" [menuItems]="menuItems" [colorTheme]="customTheme" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
+```
+
+### 6. Using Icons
+
+The component supports a variety of icons. By default, it uses Material Icons:
+
+1. Add Material Icons to your project by including the following in your `index.html`:
+
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+```
+
+2. Use icon names from the Material Icons library in your menu items:
+
+```typescript
 menuItems = [
-  { label: 'Home', icon: 'material-icons home', link: '/home' },
-  { label: 'Settings', icon: 'material-icons settings', children: [...] }
+  {
+    label: "Dashboard",
+    icon: "dashboard", // Material icon name
+    link: "/dashboard",
+  },
+  // ...
 ];
 ```
 
-**Bootstrap Icons:**
+### 7. Handling Navigation
+
+Implement navigation logic in your component:
+
 ```typescript
-// Using Bootstrap Icons
-menuItems = [
-  { label: 'Home', icon: 'bi bi-house', link: '/home' },
-  { label: 'Settings', icon: 'bi bi-gear', children: [...] }
-];
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { MlpmComponent, MenuItem } from "@ramiz4/ng-mlpm";
+
+@Component({
+  // ...
+  imports: [MlpmComponent],
+  // ...
+})
+export class YourComponent {
+  // ...menu items
+
+  constructor(private router: Router) {}
+
+  onMenuItemClick(item: MenuItem) {
+    if (item.link) {
+      this.router.navigate([item.link]);
+    }
+  }
+}
 ```
 
-The icons will be automatically applied to the menu items and will reflect the style of your chosen icon library.
+### 8. Responsive Behavior
 
-## 🚀 Development
+The component is responsive by default. For mobile views, you might want to toggle its visibility:
 
-### Building the library
+```typescript
+import { Component } from "@angular/core";
+import { MlpmComponent } from "@ramiz4/ng-mlpm";
+
+@Component({
+  // ...
+})
+export class YourComponent {
+  // ...menu items
+
+  isMenuVisible = false;
+
+  toggleMenu() {
+    this.isMenuVisible = !this.isMenuVisible;
+  }
+}
+```
+
+In your template:
+
+```html
+<button (click)="toggleMenu()">Toggle Menu</button>
+
+<ng-mlpm *ngIf="isMenuVisible" [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
+```
+
+## 📚 API Reference
+
+### Inputs
+
+| Input      | Type           | Description                                | Default           |
+| ---------- | -------------- | ------------------------------------------ | ----------------- |
+| title      | string         | The title displayed at the top of the menu | 'Menu'            |
+| titleIcon  | string         | Icon name for the title                    | 'menu'            |
+| menuItems  | MenuItem[]     | Array of menu items to display             | []                |
+| colorTheme | MenuColorTheme | Custom color theme for the menu            | defaultColorTheme |
+
+### Outputs
+
+| Output    | Type                   | Description                                     |
+| --------- | ---------------------- | ----------------------------------------------- |
+| linkClick | EventEmitter<MenuItem> | Emitted when a menu item with a link is clicked |
+
+### Interfaces
+
+```typescript
+interface MenuItem {
+  label: string;
+  icon?: string;
+  link?: string;
+  children?: MenuItem[];
+}
+
+interface MenuColorTheme {
+  primary: string;
+  secondary: string;
+  text: string;
+  accent: string;
+  hover: string;
+}
+```
+
+## 🛠️ Development
+
+To start a local development server, run:
 
 ```bash
-ng build mlpm
+# Using npm
+npm start
+
+# Using pnpm
+pnpm start
 ```
 
-### Running tests
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-```bash
-ng test mlpm
-```
+## Contributing
 
-## 📄 License
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-MIT © [Ramiz Loki](https://github.com/yourusername)
+## License
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
+This project is licensed under the MIT License - see the LICENSE file for details.

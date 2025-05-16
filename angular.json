@@ -72,6 +72,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/mlpm-app/public"
+              },
+              {
+                "glob": "404.html",
+                "input": "projects/mlpm-app/src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -131,6 +136,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/mlpm-app/public"
+              },
+              {
+                "glob": "404.html",
+                "input": "projects/mlpm-app/src",
+                "output": "/"
               }
             ],
             "styles": [

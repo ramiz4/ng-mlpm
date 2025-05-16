@@ -21,24 +21,8 @@ export class MlpmComponent {
 
   // Color theme configuration with defaults
   @Input() set colorTheme(theme: Partial<MenuColorTheme>) {
-    this._colorTheme = { ...this.defaultColorTheme, ...theme };
-    this.applyColorTheme();
+    this.applyColorTheme(theme);
   }
-
-  get colorTheme(): MenuColorTheme {
-    return this._colorTheme;
-  }
-
-  private _colorTheme: MenuColorTheme;
-
-  // Default color theme (elegant gray gradient scheme)
-  private defaultColorTheme: MenuColorTheme = {
-    primary: '#2c3e50', // Deep slate gray
-    secondary: '#34495e', // Medium slate gray
-    text: '#ecf0f1', // Light silver text
-    accent: '#3498db', // Sky blue accent
-    hover: '#4a5c6b', // Light slate gray hover
-  };
 
   menuStack: MenuItem[][] = [];
   titleStack: string[] = []; // Array to store the titles of clicked menu items
@@ -46,33 +30,80 @@ export class MlpmComponent {
   activeIndex = 0;
   collapsed = false; // New state to track if menu is collapsed
 
-  constructor() {
-    this._colorTheme = { ...this.defaultColorTheme };
-    this.applyColorTheme();
-  }
-
   // Apply CSS custom properties to the document root for theming
-  private applyColorTheme(): void {
-    document.documentElement.style.setProperty(
-      '--mlpm-primary-color',
-      this.colorTheme.primary
-    );
-    document.documentElement.style.setProperty(
-      '--mlpm-secondary-color',
-      this.colorTheme.secondary
-    );
-    document.documentElement.style.setProperty(
-      '--mlpm-text-color',
-      this.colorTheme.text
-    );
-    document.documentElement.style.setProperty(
-      '--mlpm-accent-color',
-      this.colorTheme.accent
-    );
-    document.documentElement.style.setProperty(
-      '--mlpm-hover-color',
-      this.colorTheme.hover
-    );
+  private applyColorTheme(theme: Partial<MenuColorTheme>): void {
+    if (theme.primaryBackground) {
+      document.documentElement.style.setProperty(
+        '--mlpm-primary-background',
+        theme.primaryBackground
+      );
+    }
+    if (theme.secondaryBackground) {
+      document.documentElement.style.setProperty(
+        '--mlpm-secondary-background',
+        theme.secondaryBackground
+      );
+    }
+    if (theme.tertiaryBackground) {
+      document.documentElement.style.setProperty(
+        '--mlpm-tertiary-background',
+        theme.tertiaryBackground
+      );
+    }
+    if (theme.primaryText) {
+      document.documentElement.style.setProperty(
+        '--mlpm-primary-text',
+        theme.primaryText
+      );
+    }
+    if (theme.secondaryText) {
+      document.documentElement.style.setProperty(
+        '--mlpm-secondary-text',
+        theme.secondaryText
+      );
+    }
+    if (theme.tertiaryText) {
+      document.documentElement.style.setProperty(
+        '--mlpm-tertiary-text',
+        theme.tertiaryText
+      );
+    }
+    if (theme.primaryAccent) {
+      document.documentElement.style.setProperty(
+        '--mlpm-primary-accent',
+        theme.primaryAccent
+      );
+    }
+    if (theme.secondaryAccent) {
+      document.documentElement.style.setProperty(
+        '--mlpm-secondary-accent',
+        theme.secondaryAccent
+      );
+    }
+    if (theme.tertiaryAccent) {
+      document.documentElement.style.setProperty(
+        '--mlpm-tertiary-accent',
+        theme.tertiaryAccent
+      );
+    }
+    if (theme.primaryHover) {
+      document.documentElement.style.setProperty(
+        '--mlpm-primary-hover',
+        theme.primaryHover
+      );
+    }
+    if (theme.secondaryHover) {
+      document.documentElement.style.setProperty(
+        '--mlpm-secondary-hover',
+        theme.secondaryHover
+      );
+    }
+    if (theme.tertiaryHover) {
+      document.documentElement.style.setProperty(
+        '--mlpm-tertiary-hover',
+        theme.tertiaryHover
+      );
+    }
   }
 
   // This method simply returns the icon class as-is
