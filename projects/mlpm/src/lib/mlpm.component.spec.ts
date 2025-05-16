@@ -34,13 +34,23 @@ describe('MlpmComponent', () => {
     expect(component.iconStack.length).toBe(0);
     expect(component.activeIndex).toBe(0);
     expect(component.collapsed).toBeFalse();
-  });
+    });
 
-  it('should set colorTheme and apply it to CSS variables', () => {
+    it('should set colorTheme and apply it to CSS variables', () => {
     // Arrange
     const customTheme = {
-      primary: '#ff0000',
-      text: '#ffffff',
+      primaryBackground: '#ff0000',
+      secondaryBackground: '#00ff00',
+      tertiaryBackground: '#0000ff',
+      primaryText: '#ffffff',
+      secondaryText: '#eeeeee',
+      tertiaryText: '#dddddd',
+      primaryAccent: '#ff00ff',
+      secondaryAccent: '#00ffff',
+      tertiaryAccent: '#ffff00',
+      primaryHover: '#990000',
+      secondaryHover: '#009900',
+      tertiaryHover: '#000099'
     };
     const spy = spyOn(document.documentElement.style, 'setProperty');
 
@@ -48,21 +58,44 @@ describe('MlpmComponent', () => {
     component.colorTheme = customTheme;
 
     // Assert
-    expect(component.colorTheme.primary).toBe('#ff0000');
-    expect(component.colorTheme.text).toBe('#ffffff');
-    // Should maintain default values for properties not specified
-    expect(component.colorTheme.secondary).toBe('#34495e');
-    expect(spy).toHaveBeenCalledWith('--mlpm-primary-color', '#ff0000');
-    expect(spy).toHaveBeenCalledWith('--mlpm-text-color', '#ffffff');
-  });
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-background', '#ff0000');
+    expect(spy).toHaveBeenCalledWith('--mlpm-secondary-background', '#00ff00');
+    expect(spy).toHaveBeenCalledWith('--mlpm-tertiary-background', '#0000ff');
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-text', '#ffffff');
+    expect(spy).toHaveBeenCalledWith('--mlpm-secondary-text', '#eeeeee');
+    expect(spy).toHaveBeenCalledWith('--mlpm-tertiary-text', '#dddddd');
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-accent', '#ff00ff');
+    expect(spy).toHaveBeenCalledWith('--mlpm-secondary-accent', '#00ffff');
+    expect(spy).toHaveBeenCalledWith('--mlpm-tertiary-accent', '#ffff00');
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-hover', '#990000');
+    expect(spy).toHaveBeenCalledWith('--mlpm-secondary-hover', '#009900');
+    expect(spy).toHaveBeenCalledWith('--mlpm-tertiary-hover', '#000099');
+    });
 
-  it('should return icon name or empty string', () => {
+    it('should apply partial theme without affecting other properties', () => {
+    // Arrange
+    const partialTheme = {
+      primaryBackground: '#ff0000',
+      primaryText: '#ffffff'
+    };
+    const spy = spyOn(document.documentElement.style, 'setProperty');
+
+    // Act
+    component.colorTheme = partialTheme;
+
+    // Assert
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-background', '#ff0000');
+    expect(spy).toHaveBeenCalledWith('--mlpm-primary-text', '#ffffff');
+    expect(spy).toHaveBeenCalledTimes(2);
+    });
+
+    it('should return icon name or empty string', () => {
     expect(component.getIconName('test-icon')).toBe('test-icon');
     expect(component.getIconName('')).toBe('');
     expect(component.getIconName(undefined)).toBe('');
-  });
+    });
 
-  it('should correctly return allLevels', () => {
+    it('should correctly return allLevels', () => {
     // Arrange
     const menuItems: MenuItem[] = [{ label: 'Home', icon: 'home' }];
     const submenuItems: MenuItem[] = [{ label: 'Settings', icon: 'settings' }];
