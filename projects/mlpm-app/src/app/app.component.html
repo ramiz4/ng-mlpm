@@ -3,9 +3,8 @@
   title="Custom Theme Menu"
   titleIcon="fa fa-bars"
   [menuItems]="menuItems"
-  [colorTheme]="customTheme"
+  [colorTheme]="(customMenuTheme$ | async) || {}"
   (linkClick)="handleMenuLinkClick($event)"
-  *ngIf="theme$ | async as theme"
 >
   <div class="menu-content">
     <div class="button-container">
@@ -13,24 +12,7 @@
         <i class="fa fa-bars"></i> Toggle Menu
       </button>
 
-      <!-- Fancy Theme Toggle Switch -->
-      <div class="theme-toggle">
-        <input
-          type="checkbox"
-          id="themeToggle"
-          class="theme-toggle-checkbox"
-          [checked]="theme === 'light'"
-          (change)="toggleTheme()"
-        />
-        <label for="themeToggle" class="theme-toggle">
-          <i
-            class="toggle-icon"
-            [class.fa]="true"
-            [class.fa-moon-o]="theme === 'dark'"
-            [class.fa-sun-o]="theme === 'light'"
-          ></i>
-        </label>
-      </div>
+      <app-theme-toggle></app-theme-toggle>
     </div>
     <router-outlet></router-outlet>
   </div>

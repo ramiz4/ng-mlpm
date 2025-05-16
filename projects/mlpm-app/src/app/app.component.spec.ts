@@ -26,6 +26,23 @@ describe('AppComponent', () => {
   let themeServiceSpy: jasmine.SpyObj<ThemeService>;
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  
+  // Mock theme objects for testing
+  const mockDarkTheme: MenuColorTheme = {
+    primary: '#212121',
+    secondary: '#424242',
+    text: '#ffffff',
+    accent: '#ff4081',
+    hover: '#616161'
+  };
+  
+  const mockLightTheme: MenuColorTheme = {
+    primary: '#ffffff',
+    secondary: '#f5f5f5',
+    text: '#000000',
+    accent: '#ff4081',
+    hover: '#eeeeee'
+  };
 
   beforeEach(async () => {
     // Create router spy
@@ -36,7 +53,11 @@ describe('AppComponent', () => {
       ['toggleTheme', 'setTheme'], 
       {
         theme$: new BehaviorSubject('dark').asObservable(),
-        currentTheme: 'dark'
+        currentTheme: 'dark',
+        themeMap: {
+          'dark': mockDarkTheme,
+          'light': mockLightTheme
+        }
       }
     );
 
@@ -61,61 +82,45 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should have the dark theme by default', () => {
-    expect(themeServiceSpy.currentTheme).toBe('dark');
-    expect(component.customTheme).toEqual(component.darkTheme);
+  
+  it('should emit theme changes as observable', (done) => {
+    // Subscribe to the customMenuTheme$ observable
+    component.customMenuTheme$.subscribe(theme => {
+      // Should match the dark theme from themeMap
+      expect(theme).toEqual(themeServiceSpy.themeMap['dark']);
+      done();
+    });
   });
-
-  it('should toggle theme from dark to light', () => {
-    // Initially dark theme
-    expect(component.customTheme).toEqual(component.darkTheme);
-
-    // Setup themeService to return light after toggle
-    Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'light' });
-
-    // Toggle theme - this will call themeService.toggleTheme()
-    component.toggleTheme();
-
-    // Should call service method
-    expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
+  
+  it('should get theme from themeService.themeMap', () => {
+    // Create a BehaviorSubject we can control
+    const themeSub = new BehaviorSubject<'dark' | 'light'>('dark');
     
-    // Now simulate what the component would do after toggle
-    component.customTheme = themeServiceSpy.currentTheme === 'dark' 
-      ? component.darkTheme 
-      : component.lightTheme;
+    // Override the theme$ property of the spy
+    Object.defineProperty(themeServiceSpy, 'theme$', { value: themeSub.asObservable() });
+    Object.defineProperty(themeServiceSpy, 'currentTheme', { get: () => themeSub.value });
     
-    // Should now be light theme
-    expect(component.customTheme).toEqual(component.lightTheme);
-  });
-
-  it('should toggle theme from light to dark', () => {
-    // Setup initial theme as light
-    Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'light' });
-    
-    // Force component to update customTheme to light
-    component.customTheme = component.lightTheme;
+    // Recreate the component to use our controlled theme$
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
     
-    // Verify it's light theme
-    expect(component.customTheme).toEqual(component.lightTheme);
+    // First verify we get the dark theme (initial value)
+    let emittedTheme: MenuColorTheme | undefined;
+    const subscription = component.customMenuTheme$.subscribe(theme => {
+      emittedTheme = theme;
+    });
     
-    // Setup themeService to return dark after toggle
-    Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'dark' });
+    expect(emittedTheme).toEqual(mockDarkTheme);
     
-    // Toggle theme
-    component.toggleTheme();
+    // Now change to light theme
+    themeSub.next('light');
     
-    // Should call service method
-    expect(themeServiceSpy.toggleTheme).toHaveBeenCalled();
+    // Verify we now get the light theme
+    expect(emittedTheme).toEqual(mockLightTheme);
     
-    // Now simulate what the component would do after toggle
-    component.customTheme = themeServiceSpy.currentTheme === 'dark' 
-      ? component.darkTheme 
-      : component.lightTheme;
-    
-    // Should now be dark theme
-    expect(component.customTheme).toEqual(component.darkTheme);
+    // Clean up
+    subscription.unsubscribe();
   });
 
   it('should toggle menu', () => {
@@ -151,11 +156,8 @@ describe('AppComponent', () => {
     // Verify navigation occurred with correct path
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/test-link']);
 
-    // Verify console logs
+    // Verify console logs - only one log message in updated component
     expect(console.log).toHaveBeenCalledWith('Menu item clicked:', menuItem);
-    expect(console.log).toHaveBeenCalledWith(
-      'The selected item was: Test Item'
-    );
   });
 
   it('should not navigate when menu item has no link', () => {
@@ -175,31 +177,5 @@ describe('AppComponent', () => {
 
     // Verify console logs
     expect(console.log).toHaveBeenCalledWith('Menu item clicked:', menuItem);
-  });
-
-  it('should use darkTheme when theme is dark', () => {
-    // Ensure theme is dark
-    Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'dark' });
-    
-    // Create a new component to pick up the theme
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-    
-    // Verify dark theme is used
-    expect(component.customTheme).toEqual(component.darkTheme);
-  });
-
-  it('should use lightTheme when theme is light', () => {
-    // Set theme to light
-    Object.defineProperty(themeServiceSpy, 'currentTheme', { value: 'light' });
-    
-    // Create a new component to pick up the theme
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-    
-    // Verify light theme is used
-    expect(component.customTheme).toEqual(component.lightTheme);
   });
 });

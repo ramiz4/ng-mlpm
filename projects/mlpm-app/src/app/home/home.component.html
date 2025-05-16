@@ -1,105 +1,110 @@
-<ng-container *ngIf="theme$ | async as theme">
-  <div class="container" [ngClass]="theme === 'dark' ? 'dark-theme' : 'light-theme'">
-    <header>
-      <h1>MLPM - Multi-Level Progressive Menu</h1>
-      <p class="subtitle">
-        A powerful navigation component for Angular applications
-      </p>
-    </header>
+<div class="container">
+  <header>
+    <h1>MLPM - Multi-Level Progressive Menu</h1>
+    <p class="subtitle">
+      A powerful navigation component for Angular applications
+    </p>
+  </header>
 
-    <section class="overview">
-      <h2>What is MLPM?</h2>
-      <p>
-        MLPM is a standalone Angular component that provides a sophisticated,
-        user-friendly navigation system with support for hierarchical menus,
-        smooth transitions, and customizable theming.
-      </p>
+  <section class="overview">
+    <h2>What is MLPM?</h2>
+    <p>
+      MLPM is a standalone Angular component that provides a sophisticated,
+      user-friendly navigation system with support for hierarchical menus,
+      smooth transitions, and customizable theming.
+    </p>
 
-      <div class="features">
-        <div class="feature-card">
+    <div class="features">
+      <div class="card">
+        <div class="card-content">
           <h3>Multi-Level Navigation</h3>
           <p>
             Create unlimited menu hierarchies with smooth transitions between
             levels.
           </p>
         </div>
-        <div class="feature-card">
+      </div>
+      <div class="card">
+        <div class="card-content">
           <h3>Customizable Themes</h3>
           <p>
-            Easily adapt the menu's appearance to match your application's
-            design.
+            Easily adapt the menu's appearance to match your application's design.
           </p>
         </div>
-        <div class="feature-card">
+      </div>
+      <div class="card">
+        <div class="card-content">
           <h3>Icon Support</h3>
-          <p>
-            Integrated icon component with fallbacks for consistent styling.
-          </p>
+          <p>Integrated icon component with fallbacks for consistent styling.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="installation">
-      <h2>Getting Started</h2>
-      <div class="code-block">
-        <pre><code>npm install ng-mlpm --save</code></pre>
-      </div>
-    </section>
+  <section class="installation">
+    <h2>Getting Started</h2>
+    <div class="code-block">
+      <pre><code>npm install ng-mlpm --save</code></pre>
+    </div>
+  </section>
 
-    <section class="usage">
-      <h2>How to Use</h2>
-      <p>Import the component:</p>
-      <div class="code-block">
-        <pre><code>import {{ '{' }} MlpmComponent {{ '}' }} from 'ng-mlpm';</code></pre>
-      </div>
+  <section class="usage">
+    <h2>How to Use</h2>
+    <p>Import the component:</p>
+    <div class="code-block">
+      <pre><code>import {{ '{' }} MlpmComponent {{ '}' }} from 'ng-mlpm';</code></pre>
+    </div>
 
-      <p>Define your menu structure:</p>
-      <div class="code-block">
-        <pre><code>menuItems = {{exampleMenuItems|json}}</code></pre>
-      </div>
+    <p>Define your menu structure:</p>
+    <div class="code-block">
+      <pre><code>menuItems = {{exampleMenuItems|json}}</code></pre>
+    </div>
 
-      <p>Add to your template:</p>
-      <div class="code-block">
-        <pre><code>&lt;ng-mlpm 
+    <p>Add to your template:</p>
+    <div class="code-block">
+      <pre><code>&lt;ng-mlpm 
   [title]="'My Application'" 
   [titleIcon]="'menu'"
   [menuItems]="menuItems"
   [colorTheme]="myCustomTheme"
   (linkClick)="handleNavigation($event)"
 &gt;&lt;/ng-mlpm&gt;</code></pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="customization">
-      <h2>Customization</h2>
-      <p>
-        MLPM offers theming through a simple interface. Here are examples of
-        dark and light themes:
-      </p>
+  <section class="customization">
+    <h2>Customization</h2>
+    <p>
+      MLPM offers theming through a simple interface. Here are examples of dark
+      and light themes:
+    </p>
 
-      <div class="theme-examples">
-        <div class="theme-card dark">
+    <div class="theme-examples">
+      <div class="card dark-card">
+        <div class="card-content">
           <h3>Dark Theme</h3>
           <div class="code-block">
             <pre><code>darkTheme = {{darkTheme|json}}</code></pre>
           </div>
         </div>
+      </div>
 
-        <div class="theme-card light">
+      <div class="card light-card">
+        <div class="card-content">
           <h3>Light Theme</h3>
           <div class="code-block">
             <pre><code>lightTheme = {{lightTheme|json}}</code></pre>
           </div>
         </div>
       </div>
+    </div>
 
-      <p>You can easily toggle between themes in your application:</p>
-      <div class="code-block">
-        <pre><code>toggleTheme(): void {{ '{' }}
+    <p>You can easily toggle between themes in your application:</p>
+    <div class="code-block">
+      <pre><code>toggleTheme(): void {{ '{' }}
   this.isDarkTheme = !this.isDarkTheme;
   this.customTheme = this.isDarkTheme ? this.darkTheme : this.lightTheme;
 {{ '}' }}</code></pre>
-      </div>
-    </section>
-  </div>
-</ng-container>
+    </div>
+  </section>
+</div>

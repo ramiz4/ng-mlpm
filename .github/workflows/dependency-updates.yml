@@ -12,17 +12,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 8
+        run_install: false
+    
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 20
         cache: 'pnpm'
-    
-    - name: Install pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: 8
-        run_install: false
     
     - name: Check for dependency updates
       id: dependabot
@@ -31,7 +31,7 @@ jobs:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
     
     - name: Create pull request for dependency updates
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'chore(deps): update dependencies'

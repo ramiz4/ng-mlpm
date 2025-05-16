@@ -11,21 +11,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 8
+        run_install: false
+    
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 20
         registry-url: 'https://registry.npmjs.org'
         cache: 'pnpm'
-    
-    - name: Install pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: 8
-        run_install: false
       
     - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+      run: pnpm install --no-frozen-lockfile
     
     - name: Lint
       run: pnpm lint
@@ -33,6 +33,22 @@ jobs:
     - name: Test library
       run: pnpm test:lib
     
+    - name: Extract version from GitHub release
+      id: get_version
+      run: echo "version=$(echo ${{ github.event.release.tag_name }} | sed 's/^v//')" >> $GITHUB_OUTPUT
+    
+    - name: Update version in package.json files
+      run: |
+        # Update root package.json
+        jq '.version = "${{ steps.get_version.outputs.version }}"' package.json > package.json.tmp
+        mv package.json.tmp package.json
+        
+        # Update library package.json
+        jq '.version = "${{ steps.get_version.outputs.version }}"' projects/mlpm/package.json > projects/mlpm/package.json.tmp
+        mv projects/mlpm/package.json.tmp projects/mlpm/package.json
+        
+        echo "Updated version to ${{ steps.get_version.outputs.version }}"
+
     - name: Build library
       run: pnpm build:lib
     
