@@ -1,3 +1,10 @@
+## [19.0.5](https://github.com/ramiz4/ng-mlpm/compare/v19.0.4...v19.0.5) (2026-01-01)
+
+
+### Bug Fixes
+
+* **ci:** remove redundant pnpm version to prioritize package.json ([fa567b2](https://github.com/ramiz4/ng-mlpm/commit/fa567b28cd7d5252cfd00847f5d066139e8dd55f))
+
 ## [19.0.4](https://github.com/ramiz4/ng-mlpm/compare/v19.0.3...v19.0.4) (2026-01-01)
 
 ### Bug Fixes
