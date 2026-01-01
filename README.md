@@ -49,11 +49,11 @@ Add the MlpmComponent to your standalone component or NgModule:
 
 ```typescript
 // In a standalone component
-import { Component } from "@angular/core";
-import { MlpmComponent } from "@ramiz4/ng-mlpm";
+import { Component } from '@angular/core';
+import { MlpmComponent } from '@ramiz4/ng-mlpm';
 
 @Component({
-  selector: "app-my-component",
+  selector: 'app-my-component',
   standalone: true,
   imports: [MlpmComponent],
   // ...
@@ -63,8 +63,8 @@ export class MyComponent {
 }
 
 // OR in a module
-import { NgModule } from "@angular/core";
-import { MlpmComponent } from "@ramiz4/ng-mlpm";
+import { NgModule } from '@angular/core';
+import { MlpmComponent } from '@ramiz4/ng-mlpm';
 
 @NgModule({
   imports: [
@@ -81,9 +81,9 @@ export class MyModule {}
 Create a menu structure in your component:
 
 ```typescript
-import { Component } from "@angular/core";
-import { MlpmComponent } from "@ramiz4/ng-mlpm";
-import { MenuItem } from "@ramiz4/ng-mlpm"; // Import the interface
+import { Component } from '@angular/core';
+import { MlpmComponent } from '@ramiz4/ng-mlpm';
+import { MenuItem } from '@ramiz4/ng-mlpm'; // Import the interface
 
 @Component({
   // ...
@@ -94,30 +94,30 @@ export class YourComponent {
   // Define your menu structure
   menuItems: MenuItem[] = [
     {
-      label: "Dashboard",
-      icon: "dashboard",
-      link: "/dashboard",
+      label: 'Dashboard',
+      icon: 'dashboard',
+      link: '/dashboard',
     },
     {
-      label: "Settings",
-      icon: "settings",
+      label: 'Settings',
+      icon: 'settings',
       children: [
-        { label: "Profile", icon: "person", link: "/settings/profile" },
-        { label: "Preferences", icon: "tune", link: "/settings/preferences" },
+        { label: 'Profile', icon: 'person', link: '/settings/profile' },
+        { label: 'Preferences', icon: 'tune', link: '/settings/preferences' },
       ],
     },
     {
-      label: "Reports",
-      icon: "bar_chart",
+      label: 'Reports',
+      icon: 'bar_chart',
       children: [
-        { label: "Annual", icon: "calendar_today", link: "/reports/annual" },
-        { label: "Monthly", icon: "date_range", link: "/reports/monthly" },
+        { label: 'Annual', icon: 'calendar_today', link: '/reports/annual' },
+        { label: 'Monthly', icon: 'date_range', link: '/reports/monthly' },
         {
-          label: "Custom",
-          icon: "tune",
+          label: 'Custom',
+          icon: 'tune',
           children: [
-            { label: "By Region", icon: "public", link: "/reports/custom/region" },
-            { label: "By Department", icon: "people", link: "/reports/custom/department" },
+            { label: 'By Region', icon: 'public', link: '/reports/custom/region' },
+            { label: 'By Department', icon: 'people', link: '/reports/custom/department' },
           ],
         },
       ],
@@ -126,7 +126,7 @@ export class YourComponent {
 
   // Handle menu item clicks
   onMenuItemClick(item: MenuItem) {
-    console.log("Menu item clicked:", item);
+    console.log('Menu item clicked:', item);
     // Add your navigation logic here
   }
 }
@@ -137,7 +137,8 @@ export class YourComponent {
 Use the component in your HTML template:
 
 ```html
-<ng-mlpm [title]="'My Application'" [titleIcon]="'menu'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
+<ng-mlpm [title]="'My Application'" [titleIcon]="'menu'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)">
+</ng-mlpm>
 ```
 
 ### 5. Customize the Theme (Optional)
@@ -160,7 +161,7 @@ export class YourComponent {
     secondary: '#34495e',
     text: '#ecf0f1',
     accent: '#3498db',
-    hover: '#3e5871'
+    hover: '#3e5871',
   };
 }
 ```
@@ -168,7 +169,13 @@ export class YourComponent {
 Then apply it to the component:
 
 ```html
-<ng-mlpm [title]="'My Application'" [titleIcon]="'menu'" [menuItems]="menuItems" [colorTheme]="customTheme" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
+<ng-mlpm
+  [title]="'My Application'"
+  [titleIcon]="'menu'"
+  [menuItems]="menuItems"
+  [colorTheme]="customTheme"
+  (linkClick)="onMenuItemClick($event)">
+</ng-mlpm>
 ```
 
 ### 6. Using Icons
@@ -186,9 +193,9 @@ The component supports a variety of icons. By default, it uses Material Icons:
 ```typescript
 menuItems = [
   {
-    label: "Dashboard",
-    icon: "dashboard", // Material icon name
-    link: "/dashboard",
+    label: 'Dashboard',
+    icon: 'dashboard', // Material icon name
+    link: '/dashboard',
   },
   // ...
 ];
@@ -199,9 +206,9 @@ menuItems = [
 Implement navigation logic in your component:
 
 ```typescript
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { MlpmComponent, MenuItem } from "@ramiz4/ng-mlpm";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MlpmComponent, MenuItem } from '@ramiz4/ng-mlpm';
 
 @Component({
   // ...
@@ -226,8 +233,8 @@ export class YourComponent {
 The component is responsive by default. For mobile views, you might want to toggle its visibility:
 
 ```typescript
-import { Component } from "@angular/core";
-import { MlpmComponent } from "@ramiz4/ng-mlpm";
+import { Component } from '@angular/core';
+import { MlpmComponent } from '@ramiz4/ng-mlpm';
 
 @Component({
   // ...
@@ -248,7 +255,8 @@ In your template:
 ```html
 <button (click)="toggleMenu()">Toggle Menu</button>
 
-<ng-mlpm *ngIf="isMenuVisible" [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
+<ng-mlpm *ngIf="isMenuVisible" [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)">
+</ng-mlpm>
 ```
 
 ## 📚 API Reference

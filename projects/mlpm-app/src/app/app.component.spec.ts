@@ -2,11 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import {
-  MenuColorTheme,
-  MenuItem,
-  MlpmComponent,
-} from '../../../mlpm/src/public-api';
+import { MenuColorTheme, MenuItem, MlpmComponent } from '../../../mlpm/src/public-api';
 import { AppComponent } from './app.component';
 import { ThemeService } from './theme.service';
 
@@ -26,7 +22,7 @@ describe('AppComponent', () => {
   let themeServiceSpy: jasmine.SpyObj<ThemeService>;
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  
+
   // Mock theme objects for testing
   const mockDarkTheme: MenuColorTheme = {
     primaryBackground: '#212121',
@@ -40,9 +36,9 @@ describe('AppComponent', () => {
     tertiaryAccent: '#c2185b',
     primaryHover: '#616161',
     secondaryHover: '#757575',
-    tertiaryHover: '#9e9e9e'
+    tertiaryHover: '#9e9e9e',
   };
-  
+
   const mockLightTheme: MenuColorTheme = {
     primaryBackground: '#ffffff',
     secondaryBackground: '#f5f5f5',
@@ -55,31 +51,28 @@ describe('AppComponent', () => {
     tertiaryAccent: '#c2185b',
     primaryHover: '#eeeeee',
     secondaryHover: '#e0e0e0',
-    tertiaryHover: '#bdbdbd'
+    tertiaryHover: '#bdbdbd',
   };
 
   beforeEach(async () => {
     // Create router spy
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    
+
     // Create themeService spy with properties and methods needed for testing
-    themeServiceSpy = jasmine.createSpyObj('ThemeService', 
-      ['toggleTheme', 'setTheme'], 
-      {
-        theme$: new BehaviorSubject('dark').asObservable(),
-        currentTheme: 'dark',
-        themeMap: {
-          'dark': mockDarkTheme,
-          'light': mockLightTheme
-        }
-      }
-    );
+    themeServiceSpy = jasmine.createSpyObj('ThemeService', ['toggleTheme', 'setTheme'], {
+      theme$: new BehaviorSubject('dark').asObservable(),
+      currentTheme: 'dark',
+      themeMap: {
+        dark: mockDarkTheme,
+        light: mockLightTheme,
+      },
+    });
 
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [
         { provide: Router, useValue: routerSpy },
-        { provide: ThemeService, useValue: themeServiceSpy }
+        { provide: ThemeService, useValue: themeServiceSpy },
       ],
     })
       .overrideComponent(AppComponent, {
@@ -96,8 +89,8 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
-  
-  it('should emit theme changes as observable', (done) => {
+
+  it('should emit theme changes as observable', done => {
     // Subscribe to the customMenuTheme$ observable
     component.customMenuTheme$.subscribe(theme => {
       // Should match the dark theme from themeMap
@@ -109,30 +102,30 @@ describe('AppComponent', () => {
   it('should get theme from themeService.themeMap', () => {
     // Create a BehaviorSubject we can control
     const themeSub = new BehaviorSubject<'dark' | 'light'>('dark');
-    
+
     // Override the theme$ property of the spy
     Object.defineProperty(themeServiceSpy, 'theme$', { value: themeSub.asObservable() });
     Object.defineProperty(themeServiceSpy, 'currentTheme', { get: () => themeSub.value });
-    
+
     // Recreate the component to use our controlled theme$
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
+
     // First verify we get the dark theme (initial value)
     let emittedTheme: MenuColorTheme;
     const subscription = component.customMenuTheme$.subscribe(theme => {
       emittedTheme = theme as MenuColorTheme;
     });
-    
+
     expect(emittedTheme!).toEqual(mockDarkTheme);
-    
+
     // Now change to light theme
     themeSub.next('light');
-    
+
     // Verify we now get the light theme
     expect(emittedTheme!).toEqual(mockLightTheme);
-    
+
     // Clean up
     subscription.unsubscribe();
   });

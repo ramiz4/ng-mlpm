@@ -8,9 +8,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "mlpm": [
-        "./projects/mlpm/src/public-api"
-      ]
+      "mlpm": ["./projects/mlpm/src/public-api"]
     },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

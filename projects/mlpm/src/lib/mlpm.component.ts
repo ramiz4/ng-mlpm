@@ -33,76 +33,40 @@ export class MlpmComponent {
   // Apply CSS custom properties to the document root for theming
   private applyColorTheme(theme: Partial<MenuColorTheme>): void {
     if (theme.primaryBackground) {
-      document.documentElement.style.setProperty(
-        '--mlpm-primary-background',
-        theme.primaryBackground
-      );
+      document.documentElement.style.setProperty('--mlpm-primary-background', theme.primaryBackground);
     }
     if (theme.secondaryBackground) {
-      document.documentElement.style.setProperty(
-        '--mlpm-secondary-background',
-        theme.secondaryBackground
-      );
+      document.documentElement.style.setProperty('--mlpm-secondary-background', theme.secondaryBackground);
     }
     if (theme.tertiaryBackground) {
-      document.documentElement.style.setProperty(
-        '--mlpm-tertiary-background',
-        theme.tertiaryBackground
-      );
+      document.documentElement.style.setProperty('--mlpm-tertiary-background', theme.tertiaryBackground);
     }
     if (theme.primaryText) {
-      document.documentElement.style.setProperty(
-        '--mlpm-primary-text',
-        theme.primaryText
-      );
+      document.documentElement.style.setProperty('--mlpm-primary-text', theme.primaryText);
     }
     if (theme.secondaryText) {
-      document.documentElement.style.setProperty(
-        '--mlpm-secondary-text',
-        theme.secondaryText
-      );
+      document.documentElement.style.setProperty('--mlpm-secondary-text', theme.secondaryText);
     }
     if (theme.tertiaryText) {
-      document.documentElement.style.setProperty(
-        '--mlpm-tertiary-text',
-        theme.tertiaryText
-      );
+      document.documentElement.style.setProperty('--mlpm-tertiary-text', theme.tertiaryText);
     }
     if (theme.primaryAccent) {
-      document.documentElement.style.setProperty(
-        '--mlpm-primary-accent',
-        theme.primaryAccent
-      );
+      document.documentElement.style.setProperty('--mlpm-primary-accent', theme.primaryAccent);
     }
     if (theme.secondaryAccent) {
-      document.documentElement.style.setProperty(
-        '--mlpm-secondary-accent',
-        theme.secondaryAccent
-      );
+      document.documentElement.style.setProperty('--mlpm-secondary-accent', theme.secondaryAccent);
     }
     if (theme.tertiaryAccent) {
-      document.documentElement.style.setProperty(
-        '--mlpm-tertiary-accent',
-        theme.tertiaryAccent
-      );
+      document.documentElement.style.setProperty('--mlpm-tertiary-accent', theme.tertiaryAccent);
     }
     if (theme.primaryHover) {
-      document.documentElement.style.setProperty(
-        '--mlpm-primary-hover',
-        theme.primaryHover
-      );
+      document.documentElement.style.setProperty('--mlpm-primary-hover', theme.primaryHover);
     }
     if (theme.secondaryHover) {
-      document.documentElement.style.setProperty(
-        '--mlpm-secondary-hover',
-        theme.secondaryHover
-      );
+      document.documentElement.style.setProperty('--mlpm-secondary-hover', theme.secondaryHover);
     }
     if (theme.tertiaryHover) {
-      document.documentElement.style.setProperty(
-        '--mlpm-tertiary-hover',
-        theme.tertiaryHover
-      );
+      document.documentElement.style.setProperty('--mlpm-tertiary-hover', theme.tertiaryHover);
     }
   }
 

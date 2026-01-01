@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   currentDate = new Date();
-  
+
   // Example features that could be implemented in MLPM
   libraryFeatures = [
     {

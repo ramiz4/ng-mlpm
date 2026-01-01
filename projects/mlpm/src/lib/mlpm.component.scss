@@ -12,11 +12,11 @@
   --mlpm-primary-text: #333333;
   --mlpm-secondary-text: #666666;
   --mlpm-tertiary-text: #999999;
-  
+
   --mlpm-primary-accent: #007bff;
   --mlpm-secondary-accent: #0056b3;
   --mlpm-tertiary-accent: #004085;
-  
+
   --mlpm-primary-hover: #e0e0e0;
   --mlpm-secondary-hover: #d0d0d0;
   --mlpm-tertiary-hover: #c0c0c0;
@@ -74,7 +74,9 @@
   width: 100%;
   height: 100%;
   background: var(--mlpm-secondary-background);
-  transition: transform 0.4s ease-in-out, width 0.4s ease-in-out;
+  transition:
+    transform 0.4s ease-in-out,
+    width 0.4s ease-in-out;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -98,7 +100,9 @@
   text-overflow: ellipsis;
   max-width: 160px; /* Control maximum width */
   opacity: 1;
-  transition: opacity 0.3s, max-width 0.3s;
+  transition:
+    opacity 0.3s,
+    max-width 0.3s;
   color: var(--mlpm-primary-text);
 }
 
@@ -153,7 +157,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s, transform 0.2s; /* Added transform for hover effect */
+  transition:
+    background-color 0.3s,
+    transform 0.2s; /* Added transform for hover effect */
 }
 
 .mlpm-item-content {

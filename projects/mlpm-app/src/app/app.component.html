@@ -4,13 +4,10 @@
   titleIcon="fa fa-bars"
   [menuItems]="menuItems"
   [colorTheme]="(customMenuTheme$ | async) || {}"
-  (linkClick)="handleMenuLinkClick($event)"
->
+  (linkClick)="handleMenuLinkClick($event)">
   <div class="menu-content">
     <div class="button-container">
-      <button class="menu-toggle-button" (click)="toggleMenu()">
-        <i class="fa fa-bars"></i> Toggle Menu
-      </button>
+      <button class="menu-toggle-button" (click)="toggleMenu()"><i class="fa fa-bars"></i> Toggle Menu</button>
 
       <app-theme-toggle></app-theme-toggle>
     </div>

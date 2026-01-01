@@ -16,7 +16,7 @@ function createMatchMediaMock(prefersDarkMode: boolean): typeof window.matchMedi
     removeListener: jasmine.createSpy('removeListener'),
     addEventListener: jasmine.createSpy('addEventListener'),
     removeEventListener: jasmine.createSpy('removeEventListener'),
-    dispatchEvent: () => true
+    dispatchEvent: () => true,
   });
 }
 
@@ -70,9 +70,9 @@ describe('ThemeService', () => {
       expect(theme).toBe('dark'); // The first emission will be the initial value
     });
 
-    it('should emit theme changes through theme$ observable', (done) => {
+    it('should emit theme changes through theme$ observable', done => {
       // Collect multiple emissions from the observable
-      service.theme$.pipe(take(3), toArray()).subscribe((themes) => {
+      service.theme$.pipe(take(3), toArray()).subscribe(themes => {
         // Should have 3 emissions: initial 'dark', then 'light', then 'dark' again
         expect(themes).toEqual(['dark', 'light', 'dark']);
         done();
@@ -123,7 +123,7 @@ describe('ThemeService', () => {
     it('should set theme directly', async () => {
       // First verify the initial theme
       expect(service.currentTheme).toBe('light');
-      
+
       // Subscribe to theme changes
       const themePromise = firstValueFrom(service.theme$);
 

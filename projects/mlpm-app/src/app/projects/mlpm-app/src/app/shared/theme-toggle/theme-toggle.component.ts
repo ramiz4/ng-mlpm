@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-theme-toggle',
   imports: [],
   templateUrl: './theme-toggle.component.html',
-  styleUrl: './theme-toggle.component.scss'
+  styleUrl: './theme-toggle.component.scss',
 })
-export class ThemeToggleComponent {
-
-}
+export class ThemeToggleComponent {}

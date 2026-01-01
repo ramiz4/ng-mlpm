@@ -21,11 +21,11 @@ export class ThemeService {
       primaryText: '#ffffff', // White text
       secondaryText: '#e0e0e0', // Light grey text
       tertiaryText: '#b0bec5', // Grey text
-      
+
       primaryAccent: '#ff4081', // Pink accent
       secondaryAccent: '#f50057', // Pink accent
       tertiaryAccent: '#b0023f', // Pink accent
-      
+
       primaryHover: '#616161', // Hover color
       secondaryHover: '#757575', // Slightly lighter hover color
       tertiaryHover: '#9e9e9e', // Even lighter hover color
@@ -70,76 +70,40 @@ export class ThemeService {
   private setThemeClass(themeType: ThemeType): void {
     const theme = this.themeMap[themeType];
     if (theme.primaryBackground) {
-      document.documentElement.style.setProperty(
-        '--primary-background',
-        theme.primaryBackground
-      );
+      document.documentElement.style.setProperty('--primary-background', theme.primaryBackground);
     }
     if (theme.secondaryBackground) {
-      document.documentElement.style.setProperty(
-        '--secondary-background',
-        theme.secondaryBackground
-      );
+      document.documentElement.style.setProperty('--secondary-background', theme.secondaryBackground);
     }
     if (theme.tertiaryBackground) {
-      document.documentElement.style.setProperty(
-        '--tertiary-background',
-        theme.tertiaryBackground
-      );
+      document.documentElement.style.setProperty('--tertiary-background', theme.tertiaryBackground);
     }
     if (theme.primaryText) {
-      document.documentElement.style.setProperty(
-        '--primary-text',
-        theme.primaryText
-      );
+      document.documentElement.style.setProperty('--primary-text', theme.primaryText);
     }
     if (theme.secondaryText) {
-      document.documentElement.style.setProperty(
-        '--secondary-text',
-        theme.secondaryText
-      );
+      document.documentElement.style.setProperty('--secondary-text', theme.secondaryText);
     }
     if (theme.tertiaryText) {
-      document.documentElement.style.setProperty(
-        '--tertiary-text',
-        theme.tertiaryText
-      );
+      document.documentElement.style.setProperty('--tertiary-text', theme.tertiaryText);
     }
     if (theme.primaryAccent) {
-      document.documentElement.style.setProperty(
-        '--primary-accent',
-        theme.primaryAccent
-      );
+      document.documentElement.style.setProperty('--primary-accent', theme.primaryAccent);
     }
     if (theme.secondaryAccent) {
-      document.documentElement.style.setProperty(
-        '--secondary-accent',
-        theme.secondaryAccent
-      );
+      document.documentElement.style.setProperty('--secondary-accent', theme.secondaryAccent);
     }
     if (theme.tertiaryAccent) {
-      document.documentElement.style.setProperty(
-        '--tertiary-accent',
-        theme.tertiaryAccent
-      );
+      document.documentElement.style.setProperty('--tertiary-accent', theme.tertiaryAccent);
     }
     if (theme.primaryHover) {
-      document.documentElement.style.setProperty(
-        '--primary-hover',
-        theme.primaryHover
-      );
+      document.documentElement.style.setProperty('--primary-hover', theme.primaryHover);
     }
     if (theme.secondaryHover) {
-      document.documentElement.style.setProperty(
-        '--secondary-hover',
-        theme.secondaryHover
-      );
+      document.documentElement.style.setProperty('--secondary-hover', theme.secondaryHover);
     }
     if (theme.tertiaryHover) {
-      document.documentElement.style.setProperty(
-        '--tertiary-hover',
-        theme.tertiaryHover
-      );
+      document.documentElement.style.setProperty('--tertiary-hover', theme.tertiaryHover);
     }
   }
 }

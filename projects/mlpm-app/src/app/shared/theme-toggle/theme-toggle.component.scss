@@ -27,14 +27,16 @@
     transition: background-color 0.3s;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       left: 4px;
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 50%;
       background-color: white;
-      transition: transform 0.3s, background-color 0.3s;
+      transition:
+        transform 0.3s,
+        background-color 0.3s;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
   }

@@ -1,9 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { MenuItem } from './menu-item.interface';
 import { MlpmComponent } from './mlpm.component';
 
@@ -34,9 +29,9 @@ describe('MlpmComponent', () => {
     expect(component.iconStack.length).toBe(0);
     expect(component.activeIndex).toBe(0);
     expect(component.collapsed).toBeFalse();
-    });
+  });
 
-    it('should set colorTheme and apply it to CSS variables', () => {
+  it('should set colorTheme and apply it to CSS variables', () => {
     // Arrange
     const customTheme = {
       primaryBackground: '#ff0000',
@@ -50,7 +45,7 @@ describe('MlpmComponent', () => {
       tertiaryAccent: '#ffff00',
       primaryHover: '#990000',
       secondaryHover: '#009900',
-      tertiaryHover: '#000099'
+      tertiaryHover: '#000099',
     };
     const spy = spyOn(document.documentElement.style, 'setProperty');
 
@@ -70,13 +65,13 @@ describe('MlpmComponent', () => {
     expect(spy).toHaveBeenCalledWith('--mlpm-primary-hover', '#990000');
     expect(spy).toHaveBeenCalledWith('--mlpm-secondary-hover', '#009900');
     expect(spy).toHaveBeenCalledWith('--mlpm-tertiary-hover', '#000099');
-    });
+  });
 
-    it('should apply partial theme without affecting other properties', () => {
+  it('should apply partial theme without affecting other properties', () => {
     // Arrange
     const partialTheme = {
       primaryBackground: '#ff0000',
-      primaryText: '#ffffff'
+      primaryText: '#ffffff',
     };
     const spy = spyOn(document.documentElement.style, 'setProperty');
 
@@ -87,15 +82,15 @@ describe('MlpmComponent', () => {
     expect(spy).toHaveBeenCalledWith('--mlpm-primary-background', '#ff0000');
     expect(spy).toHaveBeenCalledWith('--mlpm-primary-text', '#ffffff');
     expect(spy).toHaveBeenCalledTimes(2);
-    });
+  });
 
-    it('should return icon name or empty string', () => {
+  it('should return icon name or empty string', () => {
     expect(component.getIconName('test-icon')).toBe('test-icon');
     expect(component.getIconName('')).toBe('');
     expect(component.getIconName(undefined)).toBe('');
-    });
+  });
 
-    it('should correctly return allLevels', () => {
+  it('should correctly return allLevels', () => {
     // Arrange
     const menuItems: MenuItem[] = [{ label: 'Home', icon: 'home' }];
     const submenuItems: MenuItem[] = [{ label: 'Settings', icon: 'settings' }];

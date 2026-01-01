@@ -18,9 +18,7 @@ export class AppComponent {
   private readonly router = inject(Router);
   private readonly themeService = inject(ThemeService);
 
-  customMenuTheme$ = this.themeService.theme$.pipe(
-    switchMap((theme) => of(this.themeService.themeMap[theme]))
-  );
+  customMenuTheme$ = this.themeService.theme$.pipe(switchMap(theme => of(this.themeService.themeMap[theme])));
 
   menuItems: MenuItem[] = [
     {
@@ -161,21 +159,13 @@ export class AppComponent {
                   label: 'iPhone 13',
                   icon: 'fa fa-apple',
                   link: '/iphone-13',
-                  children: [
-                    { label: 'iPhone 13 Pro' },
-                    { label: 'iPhone 13 Pro Max' },
-                    { label: 'iPhone 13 Mini' },
-                  ],
+                  children: [{ label: 'iPhone 13 Pro' }, { label: 'iPhone 13 Pro Max' }, { label: 'iPhone 13 Mini' }],
                 },
                 {
                   label: 'iPhone 12',
                   icon: 'fa fa-apple',
                   link: '/iphone-12',
-                  children: [
-                    { label: 'iPhone 12 Pro' },
-                    { label: 'iPhone 12 Pro Max' },
-                    { label: 'iPhone 12 Mini' },
-                  ],
+                  children: [{ label: 'iPhone 12 Pro' }, { label: 'iPhone 12 Pro Max' }, { label: 'iPhone 12 Mini' }],
                 },
               ],
             },
@@ -207,23 +197,13 @@ export class AppComponent {
           label: 'Desktops',
           icon: 'fa fa-desktop',
           link: '/desktops',
-          children: [
-            { label: 'iMac' },
-            { label: 'Mac Mini' },
-            { label: 'Dell Inspiron' },
-            { label: 'HP Pavilion' },
-          ],
+          children: [{ label: 'iMac' }, { label: 'Mac Mini' }, { label: 'Dell Inspiron' }, { label: 'HP Pavilion' }],
         },
         {
           label: 'Tablets',
           icon: 'fa fa-tablet',
           link: '/tablets',
-          children: [
-            { label: 'iPad' },
-            { label: 'iPad Pro' },
-            { label: 'iPad Air' },
-            { label: 'iPad Mini' },
-          ],
+          children: [{ label: 'iPad' }, { label: 'iPad Pro' }, { label: 'iPad Air' }, { label: 'iPad Mini' }],
         },
         { label: 'Smartwatches', icon: 'fa fa-clock', link: '/smartwatches' },
       ],
