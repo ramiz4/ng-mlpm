@@ -47,7 +47,7 @@ describe('MlpmComponent', () => {
       secondaryHover: '#009900',
       tertiaryHover: '#000099',
     };
-    const spy = spyOn(document.documentElement.style, 'setProperty');
+    const spy = spyOn(fixture.nativeElement.style, 'setProperty');
 
     // Act
     component.colorTheme = customTheme;
@@ -73,7 +73,7 @@ describe('MlpmComponent', () => {
       primaryBackground: '#ff0000',
       primaryText: '#ffffff',
     };
-    const spy = spyOn(document.documentElement.style, 'setProperty');
+    const spy = spyOn(fixture.nativeElement.style, 'setProperty');
 
     // Act
     component.colorTheme = partialTheme;

@@ -1,7 +1,7 @@
 # 🚀 NgMlpm - Angular Multilevel Progressive Menu
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Angular-19.2-dd0031.svg" alt="Angular Version">
+  <img src="https://img.shields.io/badge/Angular-21.0-dd0031.svg" alt="Angular Version">
   <img src="https://img.shields.io/badge/TypeScript-5.7-007acc.svg" alt="TypeScript Version">
   <a href="https://ramiz4.github.io/ng-mlpm/home" target="_blank">
     <img src="https://img.shields.io/badge/Demo-Live-brightgreen.svg" alt="Live Demo">
@@ -157,11 +157,18 @@ export class YourComponent {
 
   // Define a custom theme
   customTheme: MenuColorTheme = {
-    primary: '#2c3e50',
-    secondary: '#34495e',
-    text: '#ecf0f1',
-    accent: '#3498db',
-    hover: '#3e5871',
+    primaryBackground: '#2c3e50',
+    secondaryBackground: '#34495e',
+    tertiaryBackground: '#2c3e50',
+    primaryText: '#ecf0f1',
+    secondaryText: '#bdc3c7',
+    tertiaryText: '#95a5a6',
+    primaryAccent: '#3498db',
+    secondaryAccent: '#2980b9',
+    tertiaryAccent: '#1abc9c',
+    primaryHover: '#3e5871',
+    secondaryHover: '#2c3e50',
+    tertiaryHover: '#34495e',
   };
 }
 ```
@@ -233,7 +240,7 @@ export class YourComponent {
 The component is responsive by default. For mobile views, you might want to toggle its visibility:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MlpmComponent } from '@ramiz4/ng-mlpm';
 
 @Component({
@@ -242,10 +249,10 @@ import { MlpmComponent } from '@ramiz4/ng-mlpm';
 export class YourComponent {
   // ...menu items
 
-  isMenuVisible = false;
+  @ViewChild(MlpmComponent) menu!: MlpmComponent;
 
   toggleMenu() {
-    this.isMenuVisible = !this.isMenuVisible;
+    this.menu.toggle();
   }
 }
 ```
@@ -254,9 +261,9 @@ In your template:
 
 ```html
 <button (click)="toggleMenu()">Toggle Menu</button>
+<!-- Or access directly via template ref: <button (click)="menu.toggle()">Toggle</button> -->
 
-<ng-mlpm *ngIf="isMenuVisible" [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)">
-</ng-mlpm>
+<ng-mlpm #menu [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
 ```
 
 ## 📚 API Reference
@@ -276,6 +283,12 @@ In your template:
 | --------- | ---------------------- | ----------------------------------------------- |
 | linkClick | EventEmitter<MenuItem> | Emitted when a menu item with a link is clicked |
 
+### Methods
+
+| Method   | Description                                                            |
+| -------- | ---------------------------------------------------------------------- |
+| toggle() | Toggles the collapsed state of the menu and triggers change detection. |
+
 ### Interfaces
 
 ```typescript
@@ -287,11 +300,21 @@ interface MenuItem {
 }
 
 interface MenuColorTheme {
-  primary: string;
-  secondary: string;
-  text: string;
-  accent: string;
-  hover: string;
+  primaryBackground: string;
+  secondaryBackground: string;
+  tertiaryBackground: string;
+
+  primaryText: string;
+  secondaryText: string;
+  tertiaryText: string;
+
+  primaryAccent: string;
+  secondaryAccent: string;
+  tertiaryAccent: string;
+
+  primaryHover: string;
+  secondaryHover: string;
+  tertiaryHover: string;
 }
 ```
 

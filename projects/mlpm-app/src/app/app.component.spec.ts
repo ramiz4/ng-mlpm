@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { MenuColorTheme, MenuItem, MlpmComponent } from '../../../mlpm/src/public-api';
+import { MenuColorTheme, MenuItem } from '../../../mlpm/src/public-api';
 import { AppComponent } from './app.component';
 import { ThemeService } from './theme.service';
 
@@ -130,20 +130,22 @@ describe('AppComponent', () => {
     subscription.unsubscribe();
   });
 
-  it('should toggle menu collapsed state', () => {
-    component.menu = { collapsed: false } as MlpmComponent;
+  it('should delegate menu toggling to the menu component', () => {
+    // Create a spy object for the menu component
+    const menuSpy = jasmine.createSpyObj('MlpmComponent', ['toggle']);
 
-    // Toggle menu
+    // Assign the spy to the component's menu property
+    component.menu = menuSpy;
+
+    // Act
     component.toggleMenu();
 
-    // Should be collapsed
-    expect(component.menu.collapsed).toBeTrue();
+    // Assert
+    expect(menuSpy.toggle).toHaveBeenCalledTimes(1);
 
-    // Toggle again
+    // Verify it handles subsequent calls
     component.toggleMenu();
-
-    // Should not be collapsed
-    expect(component.menu.collapsed).toBeFalse();
+    expect(menuSpy.toggle).toHaveBeenCalledTimes(2);
   });
 
   it('should handle menu link clicks and navigate', () => {

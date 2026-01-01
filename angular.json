@@ -28,7 +28,8 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/mlpm/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "karmaConfig": "projects/mlpm/karma.conf.js"
           }
         },
         "lint": {
@@ -117,6 +118,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
+            "karmaConfig": "projects/mlpm-app/karma.conf.js",
             "tsConfig": "projects/mlpm-app/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [

@@ -1,5 +1,14 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+  ElementRef,
+  ChangeDetectorRef,
+  inject,
+} from '@angular/core';
 import { IconComponent } from './icon.component';
 import { MenuColorTheme } from './menu-color-theme.interface';
 import { MenuItem } from './menu-item.interface';
@@ -10,6 +19,7 @@ import { MenuItem } from './menu-item.interface';
   templateUrl: './mlpm.component.html',
   styleUrls: ['./mlpm.component.scss'],
   imports: [NgClass, IconComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MlpmComponent {
   @Input() title = '';
@@ -30,44 +40,22 @@ export class MlpmComponent {
   activeIndex = 0;
   collapsed = false; // New state to track if menu is collapsed
 
-  // Apply CSS custom properties to the document root for theming
+  private elementRef = inject(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
+
+  // Apply CSS custom properties to the component host for theming
   private applyColorTheme(theme: Partial<MenuColorTheme>): void {
-    if (theme.primaryBackground) {
-      document.documentElement.style.setProperty('--mlpm-primary-background', theme.primaryBackground);
-    }
-    if (theme.secondaryBackground) {
-      document.documentElement.style.setProperty('--mlpm-secondary-background', theme.secondaryBackground);
-    }
-    if (theme.tertiaryBackground) {
-      document.documentElement.style.setProperty('--mlpm-tertiary-background', theme.tertiaryBackground);
-    }
-    if (theme.primaryText) {
-      document.documentElement.style.setProperty('--mlpm-primary-text', theme.primaryText);
-    }
-    if (theme.secondaryText) {
-      document.documentElement.style.setProperty('--mlpm-secondary-text', theme.secondaryText);
-    }
-    if (theme.tertiaryText) {
-      document.documentElement.style.setProperty('--mlpm-tertiary-text', theme.tertiaryText);
-    }
-    if (theme.primaryAccent) {
-      document.documentElement.style.setProperty('--mlpm-primary-accent', theme.primaryAccent);
-    }
-    if (theme.secondaryAccent) {
-      document.documentElement.style.setProperty('--mlpm-secondary-accent', theme.secondaryAccent);
-    }
-    if (theme.tertiaryAccent) {
-      document.documentElement.style.setProperty('--mlpm-tertiary-accent', theme.tertiaryAccent);
-    }
-    if (theme.primaryHover) {
-      document.documentElement.style.setProperty('--mlpm-primary-hover', theme.primaryHover);
-    }
-    if (theme.secondaryHover) {
-      document.documentElement.style.setProperty('--mlpm-secondary-hover', theme.secondaryHover);
-    }
-    if (theme.tertiaryHover) {
-      document.documentElement.style.setProperty('--mlpm-tertiary-hover', theme.tertiaryHover);
-    }
+    const style = this.elementRef.nativeElement.style;
+    Object.entries(theme).forEach(([key, value]) => {
+      if (value) {
+        style.setProperty(`--mlpm-${this.camelToKebab(key)}`, value);
+      }
+    });
+  }
+
+  // Helper function to convert camelCase to kebab-case
+  private camelToKebab(str: string): string {
+    return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
   }
 
   // This method simply returns the icon class as-is
@@ -105,6 +93,7 @@ export class MlpmComponent {
       // Delay to ensure DOM has rendered the new level before triggering animation
       setTimeout(() => {
         this.activeIndex = this.menuStack.length;
+        this.cdr.markForCheck();
       }, 0);
     } else if (item.link) {
       // Emit the link click event instead of just logging
@@ -119,6 +108,7 @@ export class MlpmComponent {
         this.menuStack.pop();
         this.titleStack.pop(); // Remove the corresponding title when going back
         this.iconStack.pop(); // Remove the corresponding icon when going back
+        this.cdr.markForCheck();
       }, 400); // Match your CSS transition duration
     }
   }
@@ -129,5 +119,9 @@ export class MlpmComponent {
     if (this.activeIndex === 0) {
       this.collapsed = !this.collapsed;
     }
+  }
+  toggle(): void {
+    this.collapsed = !this.collapsed;
+    this.cdr.markForCheck();
   }
 }
