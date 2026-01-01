@@ -41,8 +41,8 @@ jobs:
     - name: Build library
       run: pnpm build:lib
 
-    - name: Build Storybook
-      run: pnpm build-storybook
+    - name: Build application
+      run: pnpm build:app
 
     - name: Upload coverage reports
       uses: codecov/codecov-action@v5

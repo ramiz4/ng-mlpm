@@ -34,13 +34,13 @@ jobs:
     - name: Build library
       run: pnpm build:lib
 
-    - name: Build Storybook
-      run: pnpm build-storybook
+    - name: Build application
+      run: pnpm build:app --base-href="/ng-mlpm/"
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: storybook-static
+        folder: dist/mlpm-app/browser
         branch: gh-pages
         token: ${{ secrets.GITHUB_TOKEN }}
         clean: true

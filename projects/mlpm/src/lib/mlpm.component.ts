@@ -1,5 +1,14 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+  ElementRef,
+  ChangeDetectorRef,
+  inject,
+} from '@angular/core';
 import { IconComponent } from './icon.component';
 import { MenuColorTheme } from './menu-color-theme.interface';
 import { MenuItem } from './menu-item.interface';
@@ -33,8 +42,6 @@ export class MlpmComponent {
 
   private elementRef = inject(ElementRef);
   private cdr = inject(ChangeDetectorRef);
-
-
 
   // Apply CSS custom properties to the component host for theming
   private applyColorTheme(theme: Partial<MenuColorTheme>): void {

@@ -9,8 +9,5 @@
     "inlineSources": true,
     "types": []
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.stories.ts"
-  ]
+  "exclude": ["**/*.spec.ts"]
 }
