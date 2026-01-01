@@ -28,13 +28,20 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/mlpm/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "karmaConfig": "projects/mlpm/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/mlpm/**/*.ts", "projects/mlpm/**/*.html"],
+            "lintFilePatterns": [
+              "projects/mlpm/**/*.ts",
+              "projects/mlpm/**/*.html"
+            ],
             "eslintConfig": "projects/mlpm/eslint.config.js"
           }
         }
@@ -57,7 +64,9 @@
             "outputPath": "dist/mlpm-app",
             "index": "projects/mlpm-app/src/index.html",
             "browser": "projects/mlpm-app/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "projects/mlpm-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -71,7 +80,9 @@
                 "output": "/"
               }
             ],
-            "styles": ["projects/mlpm-app/src/styles.scss"],
+            "styles": [
+              "projects/mlpm-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -116,7 +127,11 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "karmaConfig": "projects/mlpm-app/karma.conf.js",
             "tsConfig": "projects/mlpm-app/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -130,14 +145,19 @@
                 "output": "/"
               }
             ],
-            "styles": ["projects/mlpm-app/src/styles.scss"],
+            "styles": [
+              "projects/mlpm-app/src/styles.scss"
+            ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/mlpm-app/**/*.ts", "projects/mlpm-app/**/*.html"],
+            "lintFilePatterns": [
+              "projects/mlpm-app/**/*.ts",
+              "projects/mlpm-app/**/*.html"
+            ],
             "eslintConfig": "projects/mlpm-app/eslint.config.js"
           }
         }
@@ -145,6 +165,8 @@
     }
   },
   "cli": {
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
