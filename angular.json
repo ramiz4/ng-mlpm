@@ -28,125 +28,60 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/mlpm/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "karmaConfig": "projects/mlpm/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/mlpm/**/*.ts", "projects/mlpm/**/*.html"],
+            "lintFilePatterns": [
+              "projects/mlpm/**/*.ts",
+              "projects/mlpm/**/*.html"
+            ],
             "eslintConfig": "projects/mlpm/eslint.config.js"
           }
-        }
-      }
-    },
-    "mlpm-app": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/mlpm-app",
-      "sourceRoot": "projects/mlpm-app/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "outputPath": "dist/mlpm-app",
-            "index": "projects/mlpm-app/src/index.html",
-            "browser": "projects/mlpm-app/src/main.ts",
-            "polyfills": ["zone.js"],
-            "tsConfig": "projects/mlpm-app/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/mlpm-app/public"
-              },
-              {
-                "glob": "404.html",
-                "input": "projects/mlpm-app/src",
-                "output": "/"
-              }
+            "configDir": "projects/mlpm/.storybook",
+            "tsConfig": "projects/mlpm/tsconfig.storybook.json",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/mlpm"
             ],
-            "styles": ["projects/mlpm-app/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "mlpm-app:build:production"
-            },
-            "development": {
-              "buildTarget": "mlpm-app:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "karmaConfig": "projects/mlpm-app/karma.conf.js",
-            "tsConfig": "projects/mlpm-app/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/mlpm-app/public"
-              },
-              {
-                "glob": "404.html",
-                "input": "projects/mlpm-app/src",
-                "output": "/"
-              }
-            ],
-            "styles": ["projects/mlpm-app/src/styles.scss"],
-            "scripts": []
+            "port": 6006
           }
         },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
           "options": {
-            "lintFilePatterns": ["projects/mlpm-app/**/*.ts", "projects/mlpm-app/**/*.html"],
-            "eslintConfig": "projects/mlpm-app/eslint.config.js"
+            "configDir": "projects/mlpm/.storybook",
+            "tsConfig": "projects/mlpm/tsconfig.storybook.json",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/mlpm"
+            ],
+            "outputDir": "storybook-static"
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": ["angular-eslint"]
+    "packageManager": "pnpm",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
