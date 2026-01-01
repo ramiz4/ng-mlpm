@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
 import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
 
 @Component({
@@ -42,6 +42,8 @@ import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
   ],
 })
 export class IconComponent implements AfterViewInit, OnDestroy {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() type: 'title' | 'default' = 'default';
   @Input() name = '';
   @Input() size = '16';
@@ -50,8 +52,6 @@ export class IconComponent implements AfterViewInit, OnDestroy {
   
   hasFontIcon = false;
   private destroyed = false;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     // We need to wait for the next rendering cycle to check for computed styles
