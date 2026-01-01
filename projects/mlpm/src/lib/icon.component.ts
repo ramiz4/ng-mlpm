@@ -1,11 +1,11 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
 
 @Component({
   selector: 'ng-mlpm-icon',
   standalone: true,
-  imports: [NgClass, NgIf],
+  imports: [NgClass],
   template: `
     <i
       #iconElement
@@ -13,16 +13,17 @@ import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
       [style.fontSize.px]="size"
       [style.color]="color"
     ></i>
-    <svg
-      *ngIf="!hasFontIcon"
-      [attr.width]="size"
-      [attr.height]="size"
-      viewBox="0 0 24 24"
-      [style.fill]="color"
-    >
-      <path [attr.d]="getSvgPath()"></path>
-    </svg>
-  `,
+    @if (!hasFontIcon) {
+      <svg
+        [attr.width]="size"
+        [attr.height]="size"
+        viewBox="0 0 24 24"
+        [style.fill]="color"
+        >
+        <path [attr.d]="getSvgPath()"></path>
+      </svg>
+    }
+    `,
   styles: [
     `
       :host {
