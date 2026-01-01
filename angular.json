@@ -44,6 +44,7 @@
           "options": {
             "configDir": "projects/mlpm/.storybook",
             "tsConfig": "projects/mlpm/tsconfig.storybook.json",
+            "browserTarget": "mlpm:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "projects/mlpm"],
             "port": 6006
@@ -54,6 +55,7 @@
           "options": {
             "configDir": "projects/mlpm/.storybook",
             "tsConfig": "projects/mlpm/tsconfig.storybook.json",
+            "browserTarget": "mlpm:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "projects/mlpm"],
             "outputDir": "storybook-static"
