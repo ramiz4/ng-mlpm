@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: "release"
+  cancel-in-progress: false
+
 permissions:
   contents: write # to be able to publish a GitHub release
   issues: write # to be able to comment on released issues
@@ -40,6 +44,11 @@ jobs:
         run: |
           pnpm lint
           pnpm test:ci
+
+      - name: Build library
+        run: |
+          pnpm run copy:readme
+          pnpm build:lib
 
       - name: Release
         env:
