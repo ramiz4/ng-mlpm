@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { MenuColorTheme, MenuItem, MlpmComponent } from '../../../mlpm/src/public-api';
+import { MenuColorTheme, MenuItem } from '../../../mlpm/src/public-api';
 import { AppComponent } from './app.component';
 import { ThemeService } from './theme.service';
 

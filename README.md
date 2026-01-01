@@ -263,8 +263,7 @@ In your template:
 <button (click)="toggleMenu()">Toggle Menu</button>
 <!-- Or access directly via template ref: <button (click)="menu.toggle()">Toggle</button> -->
 
-<ng-mlpm #menu [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)">
-</ng-mlpm>
+<ng-mlpm #menu [title]="'My Application'" [menuItems]="menuItems" (linkClick)="onMenuItemClick($event)"> </ng-mlpm>
 ```
 
 ## 📚 API Reference
@@ -285,8 +284,9 @@ In your template:
 | linkClick | EventEmitter<MenuItem> | Emitted when a menu item with a link is clicked |
 
 ### Methods
-| Method | Description |
-| ------ | ----------- |
+
+| Method   | Description                                                            |
+| -------- | ---------------------------------------------------------------------- |
 | toggle() | Toggles the collapsed state of the menu and triggers change detection. |
 
 ### Interfaces
