@@ -39,42 +39,16 @@ export class MlpmComponent {
   // Apply CSS custom properties to the component host for theming
   private applyColorTheme(theme: Partial<MenuColorTheme>): void {
     const style = this.elementRef.nativeElement.style;
-    if (theme.primaryBackground) {
-      style.setProperty('--mlpm-primary-background', theme.primaryBackground);
-    }
-    if (theme.secondaryBackground) {
-      style.setProperty('--mlpm-secondary-background', theme.secondaryBackground);
-    }
-    if (theme.tertiaryBackground) {
-      style.setProperty('--mlpm-tertiary-background', theme.tertiaryBackground);
-    }
-    if (theme.primaryText) {
-      style.setProperty('--mlpm-primary-text', theme.primaryText);
-    }
-    if (theme.secondaryText) {
-      style.setProperty('--mlpm-secondary-text', theme.secondaryText);
-    }
-    if (theme.tertiaryText) {
-      style.setProperty('--mlpm-tertiary-text', theme.tertiaryText);
-    }
-    if (theme.primaryAccent) {
-      style.setProperty('--mlpm-primary-accent', theme.primaryAccent);
-    }
-    if (theme.secondaryAccent) {
-      style.setProperty('--mlpm-secondary-accent', theme.secondaryAccent);
-    }
-    if (theme.tertiaryAccent) {
-      style.setProperty('--mlpm-tertiary-accent', theme.tertiaryAccent);
-    }
-    if (theme.primaryHover) {
-      style.setProperty('--mlpm-primary-hover', theme.primaryHover);
-    }
-    if (theme.secondaryHover) {
-      style.setProperty('--mlpm-secondary-hover', theme.secondaryHover);
-    }
-    if (theme.tertiaryHover) {
-      style.setProperty('--mlpm-tertiary-hover', theme.tertiaryHover);
-    }
+    Object.entries(theme).forEach(([key, value]) => {
+      if (value) {
+        style.setProperty(`--mlpm-${this.camelToKebab(key)}`, value);
+      }
+    });
+  }
+
+  // Helper function to convert camelCase to kebab-case
+  private camelToKebab(str: string): string {
+    return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
   }
 
   // This method simply returns the icon class as-is
