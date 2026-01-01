@@ -1,5 +1,5 @@
 <div class="mlpm-wrapper" [class.collapsed]="collapsed">
-  @for (level of allLevels; track level; let i = $index) {
+  @for (level of allLevels; track $index; let i = $index) {
     <div
       class="mlpm-level"
       [style.transform]="'translateX(' + (i - activeIndex) * 100 + '%)'"
