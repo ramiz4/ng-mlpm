@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/ramiz4/ng-mlpm.git"
   },
+  "packageManager": "pnpm@10.18.2",
   "scripts": {
     "start": "pnpm storybook",
     "build": "pnpm build:lib",
