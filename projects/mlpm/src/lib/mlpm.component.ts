@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef, inject } from '@angular/core';
 import { IconComponent } from './icon.component';
 import { MenuColorTheme } from './menu-color-theme.interface';
 import { MenuItem } from './menu-item.interface';
@@ -31,7 +31,10 @@ export class MlpmComponent {
   activeIndex = 0;
   collapsed = false; // New state to track if menu is collapsed
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) { }
+  private elementRef = inject(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
+
+
 
   // Apply CSS custom properties to the component host for theming
   private applyColorTheme(theme: Partial<MenuColorTheme>): void {
