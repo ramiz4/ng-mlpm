@@ -28,20 +28,14 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/mlpm/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "karmaConfig": "projects/mlpm/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/mlpm/**/*.ts",
-              "projects/mlpm/**/*.html"
-            ],
+            "lintFilePatterns": ["projects/mlpm/**/*.ts", "projects/mlpm/**/*.html"],
             "eslintConfig": "projects/mlpm/eslint.config.js"
           }
         },
@@ -51,12 +45,7 @@
             "configDir": "projects/mlpm/.storybook",
             "tsConfig": "projects/mlpm/tsconfig.storybook.json",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/mlpm"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/mlpm"],
             "port": 6006
           }
         },
@@ -66,12 +55,7 @@
             "configDir": "projects/mlpm/.storybook",
             "tsConfig": "projects/mlpm/tsconfig.storybook.json",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/mlpm"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/mlpm"],
             "outputDir": "storybook-static"
           }
         }
@@ -80,8 +64,6 @@
   },
   "cli": {
     "packageManager": "pnpm",
-    "schematicCollections": [
-      "angular-eslint"
-    ]
+    "schematicCollections": ["angular-eslint"]
   }
 }

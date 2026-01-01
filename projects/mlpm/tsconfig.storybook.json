@@ -2,19 +2,10 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "src/**/*.stories.ts",
-    "src/**/*.mdx",
-    "src/**/*.ts",
-    ".storybook/**/*.ts"
-  ]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["src/**/*.stories.ts", "src/**/*.mdx", "src/**/*.ts", ".storybook/**/*.ts"]
 }
