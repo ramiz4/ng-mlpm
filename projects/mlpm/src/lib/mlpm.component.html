@@ -27,7 +27,7 @@
         </button>
       }
       <ul class="mlpm-list">
-        @for (item of level; track item) {
+        @for (item of level; track item.label) {
           <li
             (click)="openSubmenu(item)"
             (keydown.enter)="openSubmenu(item)"
