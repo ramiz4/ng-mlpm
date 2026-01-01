@@ -1,11 +1,11 @@
-import { NgClass, NgIf } from '@angular/common';
-import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
 import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
 
 @Component({
   selector: 'ng-mlpm-icon',
   standalone: true,
-  imports: [NgClass, NgIf],
+  imports: [NgClass],
   template: `
     <i
       #iconElement
@@ -13,16 +13,17 @@ import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
       [style.fontSize.px]="size"
       [style.color]="color"
     ></i>
-    <svg
-      *ngIf="!hasFontIcon"
-      [attr.width]="size"
-      [attr.height]="size"
-      viewBox="0 0 24 24"
-      [style.fill]="color"
-    >
-      <path [attr.d]="getSvgPath()"></path>
-    </svg>
-  `,
+    @if (!hasFontIcon) {
+      <svg
+        [attr.width]="size"
+        [attr.height]="size"
+        viewBox="0 0 24 24"
+        [style.fill]="color"
+        >
+        <path [attr.d]="getSvgPath()"></path>
+      </svg>
+    }
+    `,
   styles: [
     `
       :host {
@@ -41,6 +42,8 @@ import { SVG_PATHS, ICON_ALIASES } from './icon.constants';
   ],
 })
 export class IconComponent implements AfterViewInit, OnDestroy {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() type: 'title' | 'default' = 'default';
   @Input() name = '';
   @Input() size = '16';
@@ -49,8 +52,6 @@ export class IconComponent implements AfterViewInit, OnDestroy {
   
   hasFontIcon = false;
   private destroyed = false;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     // We need to wait for the next rendering cycle to check for computed styles

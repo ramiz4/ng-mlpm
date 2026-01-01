@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconComponent } from './icon.component';
 import { MenuColorTheme } from './menu-color-theme.interface';
@@ -9,7 +9,7 @@ import { MenuItem } from './menu-item.interface';
   standalone: true,
   templateUrl: './mlpm.component.html',
   styleUrls: ['./mlpm.component.scss'],
-  imports: [NgIf, NgFor, NgClass, IconComponent],
+  imports: [NgClass, IconComponent],
 })
 export class MlpmComponent {
   @Input() title = '';
