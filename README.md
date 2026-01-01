@@ -1,7 +1,7 @@
 # 🚀 NgMlpm - Angular Multilevel Progressive Menu
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Angular-19.2-dd0031.svg" alt="Angular Version">
+  <img src="https://img.shields.io/badge/Angular-21.0-dd0031.svg" alt="Angular Version">
   <img src="https://img.shields.io/badge/TypeScript-5.7-007acc.svg" alt="TypeScript Version">
   <a href="https://ramiz4.github.io/ng-mlpm/home" target="_blank">
     <img src="https://img.shields.io/badge/Demo-Live-brightgreen.svg" alt="Live Demo">
