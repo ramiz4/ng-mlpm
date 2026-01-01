@@ -227,6 +227,6 @@ export class AppComponent {
   }
 
   toggleMenu() {
-    this.menu.collapsed = !this.menu.collapsed;
+    this.menu.toggle();
   }
 }

@@ -120,4 +120,8 @@ export class MlpmComponent {
       this.collapsed = !this.collapsed;
     }
   }
+  toggle(): void {
+    this.collapsed = !this.collapsed;
+    this.cdr.markForCheck();
+  }
 }
