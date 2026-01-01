@@ -2,6 +2,10 @@
   "name": "ng-mlpm",
   "version": "21.0.0",
   "description": "A modern, lightweight UI component library for Angular applications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramiz4/ng-mlpm.git"
+  },
   "scripts": {
     "start": "ng serve",
     "build": "pnpm build:lib && pnpm build:app",
