@@ -43,7 +43,7 @@
     "@angular/cli": "^21.0.5",
     "@angular/compiler-cli": "^21.0.6",
     "@commitlint/cli": "20.3.1",
-    "@commitlint/config-conventional": "20.3.0",
+    "@commitlint/config-conventional": "20.3.1",
     "@compodoc/compodoc": "^1.1.32",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "7.1.0",
