@@ -10,9 +10,6 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-    labels:
-      - "dependencies"
-      - "npm"
 
   # Check for updates to GitHub Actions
   - package-ecosystem: "github-actions"
@@ -23,6 +20,3 @@ updates:
     commit-message:
       prefix: "ci"
       include: "scope"
-    labels:
-      - "dependencies"
-      - "github-actions"
