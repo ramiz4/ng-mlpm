@@ -55,7 +55,7 @@
     "@storybook/test": "8.6.15",
     "@types/jasmine": "~6.0.0",
     "@types/node": "25.0.10",
-    "angular-eslint": "21.1.0",
+    "angular-eslint": "21.2.0",
     "copyfiles": "2.4.1",
     "eslint": "^9.28.0",
     "eslint-plugin-storybook": "^10.1.11",
