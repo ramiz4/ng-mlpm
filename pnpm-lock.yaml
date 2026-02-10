@@ -52,8 +52,8 @@ importers:
         specifier: ^21.1.2
         version: 21.1.2(@angular/compiler-cli@21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3))(@angular/compiler@21.0.6)(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0)))(@types/node@25.2.2)(chokidar@5.0.0)(jiti@2.6.1)(karma@6.4.4)(less@4.4.2)(ng-packagr@21.1.0(@angular/compiler-cli@21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.6)(terser@5.44.1)(tslib@2.8.1)(typescript@5.9.3)
       '@angular/cli':
-        specifier: ^21.1.2
-        version: 21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)
+        specifier: ^21.1.3
+        version: 21.1.3(@types/node@25.2.2)(chokidar@5.0.0)
       '@angular/compiler-cli':
         specifier: ^21.0.6
         version: 21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3)
@@ -86,7 +86,7 @@ importers:
         version: 10.2.0(storybook@10.2.0(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@storybook/angular':
         specifier: ^10.1.11
-        version: 10.1.11(3b7103790483b8b5634b0621c80f5419)
+        version: 10.1.11(ad9ce4129d5540ea394643157730ce45)
       '@storybook/test':
         specifier: 8.6.15
         version: 8.6.15(storybook@10.2.0(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
@@ -98,7 +98,7 @@ importers:
         version: 25.2.2
       angular-eslint:
         specifier: 21.2.0
-        version: 21.2.0(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3)
+        version: 21.2.0(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3)
       copyfiles:
         specifier: 2.4.1
         version: 2.4.1
@@ -359,6 +359,10 @@ packages:
     resolution: {integrity: sha512-PA3gkiFhHUuXd2XuP7yzKg/9N++bjw+uOl473KwIsMuZwMPhncKa4+mUYBaffDoPqaujZvjfo6mjtCBuiBv05w==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
+  '@angular-devkit/schematics@21.1.3':
+    resolution: {integrity: sha512-Ps7bRl5uOcM7WpNJHbSls/jz5/wAI0ldkTlKyiBFA7RtNeQIABAV+hvlw5DJuEb1Lo5hnK0hXj90AyZdOxzY+w==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+
   '@angular-eslint/builder@21.2.0':
     resolution: {integrity: sha512-wcp3J9cbrDwSeI/o1D/DSvMQa8zpKjc5WhRGTx33omhWijCfiVNEAiBLWiEx5Sb/dWcoX8yFNWY5jSgFVy9Sjw==}
     peerDependencies:
@@ -495,8 +499,8 @@ packages:
       vitest:
         optional: true
 
-  '@angular/cli@21.1.2':
-    resolution: {integrity: sha512-AHjXCBl2PEilMJct6DX3ih5Fl5PiKpNDIj0ViTyVh1YcfpYjt6NzhVlV2o++8VNPNH/vMcmf2551LZIDProXXA==}
+  '@angular/cli@21.1.3':
+    resolution: {integrity: sha512-UPtDcpKyrKZRPfym9gTovcibPzl2O/Woy7B8sm45sAnjDH+jDUCcCvuIak7GpH47shQkC2J4yvnHZbD4c6XxcQ==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
 
@@ -1655,6 +1659,10 @@ packages:
     resolution: {integrity: sha512-ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==}
     engines: {node: 20 || >=22}
 
+  '@isaacs/brace-expansion@5.0.1':
+    resolution: {integrity: sha512-WMz71T1JS624nWj2n2fnYAuPovhv7EUhk69R6i9dsVyzxt5eM3bjwvgk9L+APE1TRscGysAVMANkB0jh0LQZrQ==}
+    engines: {node: 20 || >=22}
+
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
@@ -1853,8 +1861,8 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@modelcontextprotocol/sdk@1.25.2':
-    resolution: {integrity: sha512-LZFeo4F9M5qOhC/Uc1aQSrBHxMrvxett+9KLHt7OhcExtoiRN9DKgbZffMP/nxjutWDQpfMDfP3nkHI4X9ijww==}
+  '@modelcontextprotocol/sdk@1.26.0':
+    resolution: {integrity: sha512-Y5RmPncpiDtTXDbLKswIJzTqu2hyBKxTNsgKqKclDbhIgg1wgtf1fRuvxgTnRfcnxtvvgbIEcqUOzZrJ6iSReg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@cfworker/json-schema': ^4.1.1
@@ -2648,8 +2656,8 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  '@schematics/angular@21.1.2':
-    resolution: {integrity: sha512-kxwxhCIUrj7DfzEtDSs/pi/w+aII/WQLpPfLgoQCWE8/95v60WnTfd1afmsXsFoxikKPxkwoPWtU2YbhSoX9MQ==}
+  '@schematics/angular@21.1.3':
+    resolution: {integrity: sha512-obJvWBhzRdsYL2msM4+8bQD21vFl3VxaVsuiq6iIfYsxhU5i2Iar2wM9NaRaIIqAYhZ8ehQQ/moB9BEbWvDCTw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@sec-ant/readable-stream@0.4.1':
@@ -4310,8 +4318,8 @@ packages:
   exponential-backoff@3.1.3:
     resolution: {integrity: sha512-ZgEeZXj30q+I0EN+CbSSpIyPaJ5HVQD18Z1m+u1FXbAeT94mr1zw50q4q6jiiC447Nl/YTcIYSAftiGqetwXCA==}
 
-  express-rate-limit@7.5.1:
-    resolution: {integrity: sha512-7iN8iPMDzOMHPUYllBEsQdWVB6fPDMPqwjBaFrgr4Jgr/+okjvzAy+UHlYYL/Vs0OsOrMkwS6PJDkFlJwoxUnw==}
+  express-rate-limit@8.2.1:
+    resolution: {integrity: sha512-PCZEIEIxqwhzw4KF0n7QF4QqruVTcF73O5kFKUnGOyjbCCgizBBiFaYpd/fnBLUMPw/BWw9OsiN7GgrNYr7j6g==}
     engines: {node: '>= 16'}
     peerDependencies:
       express: '>= 4.11'
@@ -4590,6 +4598,10 @@ packages:
     resolution: {integrity: sha512-tvZgpqk6fz4BaNZ66ZsRaZnbHvP/jG3uKJvAZOwEVUL4RTA5nJeeLYfyN9/VA8NX/V3IBG+hkeuGpKjvELkVhA==}
     engines: {node: 20 || >=22}
 
+  glob@13.0.2:
+    resolution: {integrity: sha512-035InabNu/c1lW0tzPhAgapKctblppqsKKG9ZaNzbr+gXwWMjXoiyGSyB9sArzrjG7jY+zntRq5ZSUYemrnWVQ==}
+    engines: {node: 20 || >=22}
+
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
     deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
@@ -4651,8 +4663,8 @@ packages:
   highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
 
-  hono@4.11.3:
-    resolution: {integrity: sha512-PmQi306+M/ct/m5s66Hrg+adPnkD5jiO6IjA7WhWw0gSBSo1EcRegwuI1deZ+wd5pzCGynCcn2DprnE4/yEV4w==}
+  hono@4.11.9:
+    resolution: {integrity: sha512-Eaw2YTGM6WOxA6CXbckaEvslr2Ne4NFsKrvc0v97JD5awbmeBLO5w9Ho9L9kmKonrwF9RJlW6BxT1PVv/agBHQ==}
     engines: {node: '>=16.9.0'}
 
   hook-std@4.0.0:
@@ -4882,6 +4894,10 @@ packages:
     resolution: {integrity: sha512-2dYz766i9HprMBasCMvHMuazJ7u4WzhJwo5kb3iPSiW/iRYV6uPari3zHoqZlnuaR7V1bEiNMxikhp37rdBXbw==}
     engines: {node: '>=12'}
 
+  ip-address@10.0.1:
+    resolution: {integrity: sha512-NWv9YLW4PoW2B7xtzaS3NCot75m6nK7Icdv0o3lfMceJVRfSoQwqD4wEH5rLwoKJwUiZ/rfpiVBhnaF0FK4HoA==}
+    engines: {node: '>= 12'}
+
   ip-address@10.1.0:
     resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
     engines: {node: '>= 12'}
@@ -5023,9 +5039,9 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isexe@3.1.1:
-    resolution: {integrity: sha512-LpB/54B+/2J5hqQ7imZHfdU31OlgQqx7ZicVlkm9kzg9/w8GKLEcFfJl/t7DCEDueOyBAD6zCCwTO6Fzs0NoEQ==}
-    engines: {node: '>=16'}
+  isexe@4.0.0:
+    resolution: {integrity: sha512-FFUtZMpoZ8RqHS3XeXEmHWLA4thH+ZxCv2lOiPIn1Xc7CxrqhWzNSDzD+/chS/zbYezmiwWLdQC09JdQKmthOw==}
+    engines: {node: '>=20'}
 
   isobject@3.0.1:
     resolution: {integrity: sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==}
@@ -5337,6 +5353,10 @@ packages:
     resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
     engines: {node: 20 || >=22}
 
+  lru-cache@11.2.6:
+    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
+    engines: {node: 20 || >=22}
+
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
@@ -5508,6 +5528,10 @@ packages:
     resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
     engines: {node: 20 || >=22}
 
+  minimatch@10.1.2:
+    resolution: {integrity: sha512-fu656aJ0n2kcXwsnwnv9g24tkU5uSmOlTjd6WyyaKm2Z+h1qmY6bAjrcaIxF/BslFqbZ8UBtbJi7KgQOZD2PTw==}
+    engines: {node: 20 || >=22}
+
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -5522,8 +5546,8 @@ packages:
     resolution: {integrity: sha512-D7V8PO9oaz7PWGLbCACuI1qEOsq7UKfLotx/C0Aet43fCUB/wfQ7DYeq2oR/svFJGYDHPr38SHATeaj/ZoKHKw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  minipass-fetch@5.0.0:
-    resolution: {integrity: sha512-fiCdUALipqgPWrOVTz9fw0XhcazULXOSU6ie40DDbX1F49p1dBrSRBuswndTx1x3vEb/g0FT7vC4c4C2u/mh3A==}
+  minipass-fetch@5.0.1:
+    resolution: {integrity: sha512-yHK8pb0iCGat0lDrs/D6RZmCdaBT64tULXjdxjSMAqoDi18Q3qKEUTHypHQZQd9+FYpIS+lkvpq6C/R6SbUeRw==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   minipass-flush@1.0.5:
@@ -5534,8 +5558,8 @@ packages:
     resolution: {integrity: sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==}
     engines: {node: '>=8'}
 
-  minipass-sized@1.0.3:
-    resolution: {integrity: sha512-MbkQQ2CTiBMlA2Dm/5cY+9SWFEN8pzzOXi6rlM5Xxq0Yqbda5ZQy9sU75a673FE9ZK0Zsbr6Y5iP6u9nktfg2g==}
+  minipass-sized@2.0.0:
+    resolution: {integrity: sha512-zSsHhto5BcUVM2m1LurnXY6M//cGhVaegT71OfOXoprxT6o780GZd792ea6FfrQkuU4usHZIUczAQMRUE2plzA==}
     engines: {node: '>=8'}
 
   minipass@3.3.6:
@@ -6707,8 +6731,8 @@ packages:
   split@1.0.1:
     resolution: {integrity: sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==}
 
-  ssri@13.0.0:
-    resolution: {integrity: sha512-yizwGBpbCn4YomB2lzhZqrHLJoqFGXihNbib3ozhqF/cIp5ue+xSmOQrjNasEE62hFxsCcg/V/z23t4n8jMEng==}
+  ssri@13.0.1:
+    resolution: {integrity: sha512-QUiRf1+u9wPTL/76GTYlKttDEBWV1ga9ZXW8BG6kfdeyyM8LGPix9gROyg9V2+P0xNyF3X2Go526xKFdMZrHSQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   statuses@1.5.0:
@@ -7383,8 +7407,8 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
-  which@6.0.0:
-    resolution: {integrity: sha512-f+gEpIKMR9faW/JgAgPK1D7mekkFoqbmiwvNzuhsHetni20QSgzg9Vhn0g2JSJkkfehQnqdUAx7/e15qS1lPxg==}
+  which@6.0.1:
+    resolution: {integrity: sha512-oGLe46MIrCRqX7ytPUf66EAYvdeMIZYn3WaocqqKZAxrBpkqHfL/qvTyJ/bTk5+AqHCjXmrv3CEWgy368zhRUg==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
@@ -7810,11 +7834,21 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-eslint/builder@21.2.0(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@angular-devkit/schematics@21.1.3(chokidar@5.0.0)':
+    dependencies:
+      '@angular-devkit/core': 21.1.3(chokidar@5.0.0)
+      jsonc-parser: 3.3.1
+      magic-string: 0.30.21
+      ora: 9.0.0
+      rxjs: 7.8.2
+    transitivePeerDependencies:
+      - chokidar
+
+  '@angular-eslint/builder@21.2.0(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@angular-devkit/architect': 0.2101.3(chokidar@5.0.0)
       '@angular-devkit/core': 21.1.3(chokidar@5.0.0)
-      '@angular/cli': 21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)
+      '@angular/cli': 21.1.3(@types/node@25.2.2)(chokidar@5.0.0)
       eslint: 9.39.2(jiti@2.6.1)
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -7843,13 +7877,13 @@ snapshots:
       ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
 
-  '@angular-eslint/schematics@21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@angular-eslint/schematics@21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@angular-devkit/core': 21.1.3(chokidar@5.0.0)
-      '@angular-devkit/schematics': 21.1.2(chokidar@5.0.0)
+      '@angular-devkit/schematics': 21.1.3(chokidar@5.0.0)
       '@angular-eslint/eslint-plugin': 21.2.0(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@angular-eslint/eslint-plugin-template': 21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      '@angular/cli': 21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)
+      '@angular/cli': 21.1.3(@types/node@25.2.2)(chokidar@5.0.0)
       ignore: 7.0.5
       semver: 7.7.3
       strip-json-comments: 3.1.1
@@ -7983,15 +8017,15 @@ snapshots:
       - tsx
       - yaml
 
-  '@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)':
+  '@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0)':
     dependencies:
-      '@angular-devkit/architect': 0.2101.2(chokidar@5.0.0)
-      '@angular-devkit/core': 21.1.2(chokidar@5.0.0)
-      '@angular-devkit/schematics': 21.1.2(chokidar@5.0.0)
+      '@angular-devkit/architect': 0.2101.3(chokidar@5.0.0)
+      '@angular-devkit/core': 21.1.3(chokidar@5.0.0)
+      '@angular-devkit/schematics': 21.1.3(chokidar@5.0.0)
       '@inquirer/prompts': 7.10.1(@types/node@25.2.2)
       '@listr2/prompt-adapter-inquirer': 3.0.5(@inquirer/prompts@7.10.1(@types/node@25.2.2))(@types/node@25.2.2)(listr2@9.0.5)
-      '@modelcontextprotocol/sdk': 1.25.2(hono@4.11.3)(zod@4.3.5)
-      '@schematics/angular': 21.1.2(chokidar@5.0.0)
+      '@modelcontextprotocol/sdk': 1.26.0(zod@4.3.5)
+      '@schematics/angular': 21.1.3(chokidar@5.0.0)
       '@yarnpkg/lockfile': 1.1.0
       algoliasearch: 5.46.2
       ini: 6.0.0
@@ -8008,7 +8042,6 @@ snapshots:
       - '@cfworker/json-schema'
       - '@types/node'
       - chokidar
-      - hono
       - supports-color
 
   '@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0))(rxjs@7.8.2)':
@@ -9826,9 +9859,9 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@hono/node-server@1.19.9(hono@4.11.3)':
+  '@hono/node-server@1.19.9(hono@4.11.9)':
     dependencies:
-      hono: 4.11.3
+      hono: 4.11.9
 
   '@humanfs/core@0.19.1': {}
 
@@ -9969,6 +10002,10 @@ snapshots:
   '@isaacs/balanced-match@4.0.1': {}
 
   '@isaacs/brace-expansion@5.0.0':
+    dependencies:
+      '@isaacs/balanced-match': 4.0.1
+
+  '@isaacs/brace-expansion@5.0.1':
     dependencies:
       '@isaacs/balanced-match': 4.0.1
 
@@ -10166,9 +10203,9 @@ snapshots:
       '@types/react': 19.2.7
       react: 19.2.4
 
-  '@modelcontextprotocol/sdk@1.25.2(hono@4.11.3)(zod@4.3.5)':
+  '@modelcontextprotocol/sdk@1.26.0(zod@4.3.5)':
     dependencies:
-      '@hono/node-server': 1.19.9(hono@4.11.3)
+      '@hono/node-server': 1.19.9(hono@4.11.9)
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
       content-type: 1.0.5
@@ -10177,7 +10214,8 @@ snapshots:
       eventsource: 3.0.7
       eventsource-parser: 3.0.6
       express: 5.2.1
-      express-rate-limit: 7.5.1(express@5.2.1)
+      express-rate-limit: 8.2.1(express@5.2.1)
+      hono: 4.11.9
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.1
@@ -10185,7 +10223,6 @@ snapshots:
       zod: 4.3.5
       zod-to-json-schema: 3.25.1(zod@4.3.5)
     transitivePeerDependencies:
-      - hono
       - supports-color
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3':
@@ -10308,7 +10345,7 @@ snapshots:
       agent-base: 7.1.4
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
-      lru-cache: 11.2.5
+      lru-cache: 11.2.6
       socks-proxy-agent: 8.0.5
     transitivePeerDependencies:
       - supports-color
@@ -10321,12 +10358,12 @@ snapshots:
     dependencies:
       '@npmcli/promise-spawn': 9.0.1
       ini: 6.0.0
-      lru-cache: 11.2.5
+      lru-cache: 11.2.6
       npm-pick-manifest: 11.0.3
       proc-log: 6.1.0
       promise-retry: 2.0.1
       semver: 7.7.4
-      which: 6.0.0
+      which: 6.0.1
 
   '@npmcli/installed-package-contents@4.0.0':
     dependencies:
@@ -10338,7 +10375,7 @@ snapshots:
   '@npmcli/package-json@7.0.4':
     dependencies:
       '@npmcli/git': 7.0.1
-      glob: 13.0.0
+      glob: 13.0.2
       hosted-git-info: 9.0.2
       json-parse-even-better-errors: 5.0.0
       proc-log: 6.1.0
@@ -10347,7 +10384,7 @@ snapshots:
 
   '@npmcli/promise-spawn@9.0.1':
     dependencies:
-      which: 6.0.0
+      which: 6.0.1
 
   '@npmcli/redact@4.0.0': {}
 
@@ -10358,7 +10395,7 @@ snapshots:
       '@npmcli/promise-spawn': 9.0.1
       node-gyp: 12.2.0
       proc-log: 6.1.0
-      which: 6.0.0
+      which: 6.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -10776,10 +10813,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  '@schematics/angular@21.1.2(chokidar@5.0.0)':
+  '@schematics/angular@21.1.3(chokidar@5.0.0)':
     dependencies:
-      '@angular-devkit/core': 21.1.2(chokidar@5.0.0)
-      '@angular-devkit/schematics': 21.1.2(chokidar@5.0.0)
+      '@angular-devkit/core': 21.1.3(chokidar@5.0.0)
+      '@angular-devkit/schematics': 21.1.3(chokidar@5.0.0)
       jsonc-parser: 3.3.1
     transitivePeerDependencies:
       - chokidar
@@ -10963,7 +11000,7 @@ snapshots:
     dependencies:
       storybook: 10.2.0(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
-  '@storybook/angular@10.1.11(3b7103790483b8b5634b0621c80f5419)':
+  '@storybook/angular@10.1.11(ad9ce4129d5540ea394643157730ce45)':
     dependencies:
       '@angular-devkit/architect': 0.2101.3(chokidar@5.0.0)
       '@angular-devkit/build-angular': 21.1.1(@angular/compiler-cli@21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3))(@angular/compiler@21.0.6)(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)(zone.js@0.16.0)))(@types/node@25.2.2)(chokidar@5.0.0)(html-webpack-plugin@5.6.5(webpack@5.104.1(esbuild@0.27.2)))(jiti@2.6.1)(karma@6.4.4)(ng-packagr@21.1.0(@angular/compiler-cli@21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(typescript@5.9.3)
@@ -10984,7 +11021,7 @@ snapshots:
       typescript: 5.9.3
       webpack: 5.104.1(esbuild@0.27.2)
     optionalDependencies:
-      '@angular/cli': 21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)
+      '@angular/cli': 21.1.3(@types/node@25.2.2)(chokidar@5.0.0)
       zone.js: 0.16.0
     transitivePeerDependencies:
       - '@rspack/core'
@@ -11138,7 +11175,7 @@ snapshots:
   '@tufjs/models@4.1.0':
     dependencies:
       '@tufjs/canonical-json': 2.0.0
-      minimatch: 10.1.1
+      minimatch: 10.1.2
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -11655,16 +11692,16 @@ snapshots:
       '@algolia/requester-fetch': 5.46.2
       '@algolia/requester-node-http': 5.46.2
 
-  angular-eslint@21.2.0(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3):
+  angular-eslint@21.2.0(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
       '@angular-devkit/core': 21.1.2(chokidar@5.0.0)
       '@angular-devkit/schematics': 21.1.2(chokidar@5.0.0)
-      '@angular-eslint/builder': 21.2.0(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      '@angular-eslint/builder': 21.2.0(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@angular-eslint/eslint-plugin': 21.2.0(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@angular-eslint/eslint-plugin-template': 21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      '@angular-eslint/schematics': 21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@angular/cli@21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      '@angular-eslint/schematics': 21.2.0(@angular-eslint/template-parser@21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@angular/cli@21.1.3(@types/node@25.2.2)(chokidar@5.0.0))(@typescript-eslint/types@8.54.0)(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(chokidar@5.0.0)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@angular-eslint/template-parser': 21.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      '@angular/cli': 21.1.2(@types/node@25.2.2)(chokidar@5.0.0)(hono@4.11.3)
+      '@angular/cli': 21.1.3(@types/node@25.2.2)(chokidar@5.0.0)
       '@typescript-eslint/types': 8.54.0
       '@typescript-eslint/utils': 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.2(jiti@2.6.1)
@@ -11912,14 +11949,14 @@ snapshots:
     dependencies:
       '@npmcli/fs': 5.0.0
       fs-minipass: 3.0.3
-      glob: 13.0.0
-      lru-cache: 11.2.5
+      glob: 13.0.2
+      lru-cache: 11.2.6
       minipass: 7.1.2
       minipass-collect: 2.0.1
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
       p-map: 7.0.4
-      ssri: 13.0.0
+      ssri: 13.0.1
       unique-filename: 5.0.0
 
   call-bind-apply-helpers@1.0.2:
@@ -12795,9 +12832,10 @@ snapshots:
 
   exponential-backoff@3.1.3: {}
 
-  express-rate-limit@7.5.1(express@5.2.1):
+  express-rate-limit@8.2.1(express@5.2.1):
     dependencies:
       express: 5.2.1
+      ip-address: 10.0.1
 
   express@4.22.1:
     dependencies:
@@ -13163,6 +13201,12 @@ snapshots:
       minipass: 7.1.2
       path-scurry: 2.0.1
 
+  glob@13.0.2:
+    dependencies:
+      minimatch: 10.1.2
+      minipass: 7.1.2
+      path-scurry: 2.0.1
+
   glob@7.2.3:
     dependencies:
       fs.realpath: 1.0.0
@@ -13222,7 +13266,7 @@ snapshots:
 
   highlight.js@10.7.3: {}
 
-  hono@4.11.3: {}
+  hono@4.11.9: {}
 
   hook-std@4.0.0: {}
 
@@ -13405,7 +13449,7 @@ snapshots:
 
   ignore-walk@8.0.0:
     dependencies:
-      minimatch: 10.1.1
+      minimatch: 10.1.2
 
   ignore@5.3.2: {}
 
@@ -13461,6 +13505,8 @@ snapshots:
     dependencies:
       from2: 2.3.0
       p-is-promise: 3.0.0
+
+  ip-address@10.0.1: {}
 
   ip-address@10.1.0: {}
 
@@ -13557,7 +13603,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isexe@3.1.1: {}
+  isexe@4.0.0: {}
 
   isobject@3.0.1: {}
 
@@ -13919,6 +13965,8 @@ snapshots:
 
   lru-cache@11.2.5: {}
 
+  lru-cache@11.2.6: {}
+
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
@@ -13959,13 +14007,13 @@ snapshots:
       cacache: 20.0.3
       http-cache-semantics: 4.2.0
       minipass: 7.1.2
-      minipass-fetch: 5.0.0
+      minipass-fetch: 5.0.1
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
       negotiator: 1.0.0
       proc-log: 6.1.0
       promise-retry: 2.0.1
-      ssri: 13.0.0
+      ssri: 13.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -14074,6 +14122,10 @@ snapshots:
     dependencies:
       '@isaacs/brace-expansion': 5.0.0
 
+  minimatch@10.1.2:
+    dependencies:
+      '@isaacs/brace-expansion': 5.0.1
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.12
@@ -14088,10 +14140,10 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  minipass-fetch@5.0.0:
+  minipass-fetch@5.0.1:
     dependencies:
       minipass: 7.1.2
-      minipass-sized: 1.0.3
+      minipass-sized: 2.0.0
       minizlib: 3.1.0
     optionalDependencies:
       encoding: 0.1.13
@@ -14104,9 +14156,9 @@ snapshots:
     dependencies:
       minipass: 3.3.6
 
-  minipass-sized@1.0.3:
+  minipass-sized@2.0.0:
     dependencies:
-      minipass: 3.3.6
+      minipass: 7.1.2
 
   minipass@3.3.6:
     dependencies:
@@ -14259,7 +14311,7 @@ snapshots:
       semver: 7.7.4
       tar: 7.5.7
       tinyglobby: 0.2.15
-      which: 6.0.0
+      which: 6.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -14304,7 +14356,7 @@ snapshots:
     dependencies:
       hosted-git-info: 9.0.2
       proc-log: 6.1.0
-      semver: 7.7.3
+      semver: 7.7.4
       validate-npm-package-name: 7.0.2
 
   npm-packlist@10.0.3:
@@ -14325,7 +14377,7 @@ snapshots:
       jsonparse: 1.3.1
       make-fetch-happen: 15.0.3
       minipass: 7.1.2
-      minipass-fetch: 5.0.0
+      minipass-fetch: 5.0.1
       minizlib: 3.1.0
       npm-package-arg: 13.0.2
       proc-log: 6.1.0
@@ -14515,7 +14567,7 @@ snapshots:
       proc-log: 6.1.0
       promise-retry: 2.0.1
       sigstore: 4.1.0
-      ssri: 13.0.0
+      ssri: 13.0.1
       tar: 7.5.7
     transitivePeerDependencies:
       - supports-color
@@ -15448,7 +15500,7 @@ snapshots:
     dependencies:
       through: 2.3.8
 
-  ssri@13.0.0:
+  ssri@13.0.1:
     dependencies:
       minipass: 7.1.2
 
@@ -16081,9 +16133,9 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  which@6.0.0:
+  which@6.0.1:
     dependencies:
-      isexe: 3.1.1
+      isexe: 4.0.0
 
   wildcard@2.0.1: {}
 
